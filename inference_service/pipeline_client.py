@@ -49,6 +49,7 @@ class PipelineResult:
     response_audio_ref: str
     latency_ms: float
     error_reason: str | None = None
+    retries_performed: int = 0
 
 
 class CircuitBreaker:
@@ -257,6 +258,7 @@ class ResilientPipelineClient(BasePipelineClient):
                 result = await self.client.process_call(event_id, audio_ref)
                 # Successful call
                 await self.cb.record_success()
+                result.retries_performed = attempt
                 return result
 
             except (DownstreamServiceError, httpx.RequestError) as exc:

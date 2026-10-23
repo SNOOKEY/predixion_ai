@@ -49,7 +49,7 @@ base_client = HttpMockPipelineClient(base_url=mock_url, timeout_s=5.0)
 resilient_client = ResilientPipelineClient(
     underlying_client=base_client,
     circuit_breaker=circuit_breaker,
-    max_retries=int(os.getenv("MAX_RETRIES", "3")),
+    max_retries=int(os.getenv("MAX_RETRIES", "2")),
     base_delay_s=float(os.getenv("RETRY_BASE_DELAY_S", "0.2")),
     max_delay_s=float(os.getenv("RETRY_MAX_DELAY_S", "2.0")),
     backoff_factor=float(os.getenv("RETRY_BACKOFF_FACTOR", "2.0")),
@@ -117,16 +117,19 @@ async def process_call_event(request: CallProcessRequest):
             event=event,
             status="success",
             outcome=event.outcome.value if hasattr(event.outcome, "value") else str(event.outcome),
-            retries=0,
+            retries=pipeline_res.retries_performed,
             latency_ms=round(total_latency, 2),
             cb_state=circuit_breaker.state.value,
         )
+
+        if pipeline_res.retries_performed > 0:
+            metrics_counter["retried_calls"] += pipeline_res.retries_performed
 
         return CallProcessResponse(
             event_id=event.event_id,
             status="success",
             outcome=event.outcome,
-            retries_attempted=0,
+            retries_attempted=pipeline_res.retries_performed,
             circuit_breaker_state=circuit_breaker.state.value,
             transcript=pipeline_res.transcript,
             response_audio_ref=pipeline_res.response_audio_ref,

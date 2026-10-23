@@ -31,7 +31,7 @@ class PipelineErrorResponse(BaseModel):
     reason: str = "downstream_timeout"
 
 
-# Default failure rate is 20% per Appendix B
+# Default failure rate is 20% strictly per Appendix B
 FAILURE_RATE = float(os.getenv("FAILURE_RATE", "0.20"))
 
 
@@ -52,34 +52,24 @@ async def health_check():
     },
     tags=["Pipeline"],
 )
-async def process_pipeline(
-    payload: PipelineProcessRequest,
-    force_failure: bool | None = None,
-):
+async def process_pipeline(payload: PipelineProcessRequest):
     """
-    Simulates STT -> LLM -> TTS pipeline call:
+    Simulates STT -> LLM -> TTS pipeline call strictly per Appendix B:
     - 20% independent failure rate returning HTTP 503.
     - Lognormal latency targeting p50 ~ 300ms, p90 ~ 700ms, p99 ~ 1200ms.
     """
-    should_fail = (
-        force_failure
-        if force_failure is not None
-        else (random.random() < FAILURE_RATE)
-    )
-
-    if should_fail:
-        # Simulate small network drop or immediate timeout before failing
+    # 20% failure injection per Appendix B
+    if random.random() < FAILURE_RATE:
         await asyncio.sleep(0.05)
         return JSONResponse(
             status_code=503,
             content={"status": "error", "reason": "downstream_timeout"},
         )
 
-    # 2. Simulate realistic pipeline latency (Appendix B: mu=5.7, sigma=0.35 in ms)
+    # Simulate realistic pipeline latency (Appendix B: mu=5.7, sigma=0.35 in ms)
     # Target distribution: p50 ~ 300ms, p90 ~ 700ms, p99 ~ 1200ms
     latency_ms = random.lognormvariate(mu=5.7, sigma=0.35)
 
-    # Non-blocking async sleep to simulate remote I/O processing
     await asyncio.sleep(latency_ms / 1000.0)
 
     return PipelineSuccessResponse(

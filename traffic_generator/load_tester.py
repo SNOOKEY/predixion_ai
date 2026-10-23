@@ -70,7 +70,11 @@ def create_synthetic_event(base_event: dict | None = None) -> dict:
     }
 
 
-async def send_single_call(client: httpx.AsyncClient, target_url: str, event_data: dict | None = None) -> dict:
+async def send_single_call(
+    client: httpx.AsyncClient,
+    target_url: str,
+    event_data: dict | None = None,
+) -> dict:
     event = create_synthetic_event(event_data)
     payload = {
         "event": event,
@@ -123,6 +127,7 @@ async def run_traffic_profile(
     compression_factor: float = 60.0,
     events_pool: list[dict] | None = None,
     quick_test: bool = False,
+    quick_count: int = 75,
 ):
     print("=" * 80)
     print("Predixion AI Voice Agent — Appendix C Traffic Replay Engine")
@@ -133,12 +138,12 @@ async def run_traffic_profile(
     print("=" * 80)
 
     if quick_test:
-        count = min(30, len(events_pool)) if events_pool else 30
-        print(f"\n[QUICK-TEST MODE] Dispatching {count} unique calls...")
+        count = quick_count
+        print(f"\n[QUICK-TEST MODE] Dispatching {count} calls under Appendix B 20% failure...")
         results = []
         async with httpx.AsyncClient() as client:
             for i in range(count):
-                event_data = events_pool[i] if i < len(events_pool) else None
+                event_data = events_pool[i % len(events_pool)] if events_pool else None
                 res = await send_single_call(client, target_url, event_data)
                 results.append(res)
                 print(
@@ -243,7 +248,8 @@ if __name__ == "__main__":
     parser.add_argument("--hours", type=float, default=24.0, help="Simulated duration in hours")
     parser.add_argument("--compression", type=float, default=360.0, help="Compression factor (default 360: 10s = 1 hr)")
     parser.add_argument("--dataset", default="data/sample_call_events.json", help="Path to pre-generated JSON dataset")
-    parser.add_argument("--quick", action="store_true", help="Run quick 30-call verification test")
+    parser.add_argument("--count", type=int, default=75, help="Number of calls to send in --quick mode (default 75)")
+    parser.add_argument("--quick", action="store_true", help="Run quick verification test (default 75 calls)")
     parser.add_argument("--inspect", action="store_true", help="Inspect SQLite database and print records")
 
     args = parser.parse_args()
@@ -259,5 +265,6 @@ if __name__ == "__main__":
                 compression_factor=args.compression,
                 events_pool=dataset_records,
                 quick_test=args.quick,
+                quick_count=args.count,
             )
         )
