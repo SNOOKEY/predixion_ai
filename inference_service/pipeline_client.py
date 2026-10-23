@@ -207,7 +207,8 @@ class HttpMockPipelineClient(BasePipelineClient):
                 response_audio_ref=data.get("response_audio_ref", ""),
                 latency_ms=data.get("latency_ms", 0.0),
             )
-        elif response.status_code == 503:
+
+        if response.status_code == 503:
             err_data = response.json() if "application/json" in response.headers.get("content-type", "") else {}
             reason = err_data.get("reason", "downstream_timeout")
             raise DownstreamServiceError(
@@ -215,12 +216,12 @@ class HttpMockPipelineClient(BasePipelineClient):
                 status_code=503,
                 reason=reason,
             )
-        else:
-            raise DownstreamServiceError(
-                message=f"Unexpected downstream response HTTP {response.status_code}",
-                status_code=response.status_code,
-                reason="unexpected_status",
-            )
+
+        raise DownstreamServiceError(
+            message=f"Unexpected downstream response HTTP {response.status_code}",
+            status_code=response.status_code,
+            reason="unexpected_status",
+        )
 
 
 class OpenWeightPipelineClientStub(BasePipelineClient):

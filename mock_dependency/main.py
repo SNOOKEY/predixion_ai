@@ -81,5 +81,6 @@ async def process_pipeline(payload: PipelineProcessRequest):
 
 
 if __name__ == "__main__":
+    host = os.getenv("HOST", "127.0.0.1")
     port = int(os.getenv("PORT", "8001"))
-    uvicorn.run("mock_dependency.main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("mock_dependency.main:app", host=host, port=port, reload=True)

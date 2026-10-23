@@ -1,7 +1,6 @@
 import logging
 import os
 import time
-
 from contextlib import asynccontextmanager
 
 import httpx
@@ -33,7 +32,7 @@ logging.basicConfig(
 logger = logging.getLogger("inference_service")
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_app: FastAPI):
     """Lifecycle manager ensuring connection pools are cleanly closed on termination."""
     yield
     await resilient_client.close()
@@ -360,5 +359,6 @@ async def reset_circuit_breaker():
 
 
 if __name__ == "__main__":
+    host = os.getenv("HOST", "127.0.0.1")
     port = int(os.getenv("PORT", "8000"))
-    uvicorn.run("inference_service.main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("inference_service.main:app", host=host, port=port, reload=True)

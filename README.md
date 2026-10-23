@@ -61,7 +61,8 @@ A resilient, compliant voice-agent inference service for BFSI collections portfo
 ## Quickstart & Execution
 
 ### Prerequisites
-- Python 3.10+ installed
+- Python 3.10+ installed (or Docker / Docker Compose)
+- **Zero local evaluator overhead**: Evaluators **do NOT need to install Trivy, SonarQube, Bandit, or scanner binaries** locally. All security sniffing, vulnerability checks, and container image scans run automatically in **GitHub Actions CI** on push/merge.
 - No cloud account or external credentials required (Zero-Secret compliance)
 
 ### Option 1: Local Python Execution
@@ -163,6 +164,42 @@ To swap the mocked dependency for a production open-weight stack without touchin
 3. **TTS**: `Piper` (lightweight, deterministic ~50ms audio synthesis) or `XTTS-v2`.
 
 Because `ResilientPipelineClient` wraps any subclass of `BasePipelineClient`, the circuit breaking, backoff retries, and SQLite dead-letter capturing operate identically regardless of whether the underlying target is the HTTP mock or real local GPU model inference.
+
+---
+
+## Automated CI/CD Pipeline (GitHub Actions)
+
+This repository includes a multi-stage, gated CI pipeline in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) that executes automatically upon code push or pull request to `main`:
+
+```
+[Push / Merge to main]
+          │
+          ▼
+┌───────────────────────────────────────────────┐
+│ Stage 1: code-quality-and-test                │
+│ • Ruff code formatting & linting checks       │
+│ • Pytest unit & resilience tests with coverage│
+└───────────────────────┬───────────────────────┘
+                        │ Gate 1: PASS
+                        ▼
+┌───────────────────────────────────────────────┐
+│ Stage 2: vulnerability-security-scan          │
+│ • pip-audit: Dependency CVE sniffing (SCA)    │
+│ • Bandit: AST static security sniffing (SAST) │
+│ • TruffleHog: Secret leak sniffing            │
+│ • SonarQube: Quality & security gate analysis │
+└───────────────────────┬───────────────────────┘
+                        │ Gate 2: PASS
+                        ▼
+┌───────────────────────────────────────────────┐
+│ Stage 3: container-image-build                │
+│ • Docker Buildx multi-tag container build     │
+│ • Aqua Trivy: Image OS/library CVE scanning   │
+│ • Ephemeral container health smoke test       │
+└───────────────────────────────────────────────┘
+```
+
+> **Evaluator Convenience**: Evaluators do **not** need to install Docker security tools (Trivy), SonarQube servers, or SAST scanners locally. Simply run the project with Python or Docker Compose; GitHub Actions handles all enterprise security gating in the cloud.
 
 ---
 

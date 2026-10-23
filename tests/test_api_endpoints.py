@@ -5,8 +5,7 @@ from unittest.mock import AsyncMock, patch
 
 from fastapi.testclient import TestClient
 
-from inference_service.dlq_handler import DLQHandler
-from inference_service.main import app, circuit_breaker, dlq_handler, resilient_client
+from inference_service.main import app, dlq_handler, resilient_client
 from inference_service.pipeline_client import PipelineResult, RetriesExhaustedError
 
 
