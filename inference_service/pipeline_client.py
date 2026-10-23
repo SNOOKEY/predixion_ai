@@ -157,24 +157,47 @@ class BasePipelineClient(ABC):
 class HttpMockPipelineClient(BasePipelineClient):
     """
     Concrete client calling the mock HTTP service specified in Appendix B.
+    Maintains a persistent connection pool for low latency and high-throughput resilience.
     """
-    def __init__(self, base_url: str | None = None, timeout_s: float = 5.0):
+    def __init__(
+        self,
+        base_url: str | None = None,
+        timeout_s: float = 5.0,
+        client: httpx.AsyncClient | None = None,
+    ):
         self.base_url = (base_url or os.getenv("MOCK_PIPELINE_URL", "http://localhost:8001")).rstrip("/")
         self.timeout_s = timeout_s
+        self._external_client = client is not None
+        self._client = client
+
+    def _get_client(self) -> httpx.AsyncClient:
+        if self._client is None or self._client.is_closed:
+            limits = httpx.Limits(max_keepalive_connections=50, max_connections=200, keepalive_expiry=30.0)
+            self._client = httpx.AsyncClient(
+                timeout=httpx.Timeout(self.timeout_s),
+                limits=limits,
+            )
+            self._external_client = False
+        return self._client
+
+    async def close(self):
+        """Cleanly releases pooled sockets and HTTP connections."""
+        if self._client and not self._client.is_closed and not self._external_client:
+            await self._client.aclose()
 
     async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
         endpoint = f"{self.base_url}/pipeline/process"
         payload = {"event_id": event_id, "audio_ref": audio_ref}
+        client = self._get_client()
 
-        async with httpx.AsyncClient(timeout=self.timeout_s) as client:
-            try:
-                response = await client.post(endpoint, json=payload)
-            except (httpx.ConnectError, httpx.TimeoutException) as exc:
-                raise DownstreamServiceError(
-                    message=f"Connection failure to downstream: {exc}",
-                    status_code=503,
-                    reason="connection_error"
-                ) from exc
+        try:
+            response = await client.post(endpoint, json=payload)
+        except (httpx.ConnectError, httpx.TimeoutException) as exc:
+            raise DownstreamServiceError(
+                message=f"Connection failure to downstream: {exc}",
+                status_code=503,
+                reason="connection_error"
+            ) from exc
 
         if response.status_code == 200:
             data = response.json()
@@ -185,7 +208,7 @@ class HttpMockPipelineClient(BasePipelineClient):
                 latency_ms=data.get("latency_ms", 0.0),
             )
         elif response.status_code == 503:
-            err_data = response.json() if response.headers.get("content-type") == "application/json" else {}
+            err_data = response.json() if "application/json" in response.headers.get("content-type", "") else {}
             reason = err_data.get("reason", "downstream_timeout")
             raise DownstreamServiceError(
                 message=f"Downstream service returned 503: {reason}",
@@ -242,6 +265,11 @@ class ResilientPipelineClient(BasePipelineClient):
         self.max_delay_s = max_delay_s
         self.backoff_factor = backoff_factor
         self.jitter_s = jitter_s
+
+    async def close(self):
+        """Cleanly releases underlying client resources if applicable."""
+        if hasattr(self.client, "close") and callable(self.client.close):
+            await self.client.close()
 
     async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
         # 1. Circuit breaker gate

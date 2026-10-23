@@ -2,6 +2,8 @@ import logging
 import os
 import time
 
+from contextlib import asynccontextmanager
+
 import httpx
 import uvicorn
 from fastapi import FastAPI, HTTPException, Query, status
@@ -30,10 +32,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger("inference_service")
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifecycle manager ensuring connection pools are cleanly closed on termination."""
+    yield
+    await resilient_client.close()
+
+
 app = FastAPI(
     title="Collections Voice-Agent Resilient Inference Service",
     description="Production-grade collections voice inference with circuit breaking, retries, audit logging, and dead-letter handling.",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 # Global shared resilience and DLQ components

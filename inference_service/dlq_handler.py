@@ -38,8 +38,12 @@ class DLQHandler:
 
     @contextmanager
     def _connection(self) -> Generator[sqlite3.Connection, None, None]:
-        conn = sqlite3.connect(self.db_path)
+        conn = sqlite3.connect(self.db_path, timeout=15.0)
         conn.row_factory = sqlite3.Row
+        # Enable Write-Ahead Logging (WAL) and busy timeout for concurrent read/write resilience
+        conn.execute("PRAGMA journal_mode = WAL;")
+        conn.execute("PRAGMA synchronous = NORMAL;")
+        conn.execute("PRAGMA busy_timeout = 10000;")
         try:
             yield conn
         finally:
