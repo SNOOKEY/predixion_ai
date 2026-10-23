@@ -1,5 +1,12 @@
 # Predixion AI x TalentX — Open-Weight Collections Agent (Round 1: Local Track)
 
+[![CI Pipeline](https://github.com/SNOOKEY/predixion_ai/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SNOOKEY/predixion_ai/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Code Style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Security: Bandit](https://img.shields.io/badge/security-bandit-black.svg)](https://github.com/PyCQA/bandit)
+[![Vulnerability Scan: Trivy](https://img.shields.io/badge/vulnerability%20scan-trivy-1904DA.svg)](https://github.com/aquasecurity/trivy)
+[![Docker Ready](https://img.shields.io/badge/docker-ready-2496ED.svg?logo=docker&logoColor=white)](Dockerfile)
+
 A resilient, compliant voice-agent inference service for BFSI collections portfolios (credit card, BNPL, personal loans). Built to withstand real-world downstream model degradation and transient outages without dropping call events or breaching compliance mandates.
 
 ---
