@@ -1,12 +1,11 @@
 import asyncio
 import os
 import random
-from typing import Optional
 
+import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
-import uvicorn
 
 app = FastAPI(
     title="Mock STT/LLM/TTS Pipeline Service",
@@ -55,7 +54,7 @@ async def health_check():
 )
 async def process_pipeline(
     payload: PipelineProcessRequest,
-    force_failure: Optional[bool] = None,
+    force_failure: bool | None = None,
 ):
     """
     Simulates STT -> LLM -> TTS pipeline call:

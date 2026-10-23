@@ -1,11 +1,11 @@
-from datetime import datetime, timedelta, timezone
 import json
 import os
 import random
 import uuid
+from datetime import UTC, datetime, timedelta
 
 # Campaign time window configuration
-CAMPAIGN_DATE = datetime(2026, 9, 1, tzinfo=timezone.utc)
+CAMPAIGN_DATE = datetime(2026, 9, 1, tzinfo=UTC)
 CAMPAIGN_ID = "CAMP-2026-09-A"
 
 BORROWER_BUCKETS = ["0-30 DPD", "31-60 DPD", "61-90 DPD", "90+ DPD"]

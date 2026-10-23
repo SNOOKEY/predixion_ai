@@ -15,7 +15,12 @@ from inference_service.pipeline_client import (
     ResilientPipelineClient,
     RetriesExhaustedError,
 )
-from inference_service.schemas import BorrowerBucket, CallOutcome, CollectionsCallEvent, ProductType
+from inference_service.schemas import (
+    BorrowerBucket,
+    CallOutcome,
+    CollectionsCallEvent,
+    ProductType,
+)
 
 
 class MockFlakyClient(BasePipelineClient):

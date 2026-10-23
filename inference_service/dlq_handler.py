@@ -1,23 +1,22 @@
-from contextlib import contextmanager
-from datetime import datetime, timezone
 import json
 import logging
 import os
 import sqlite3
 import sys
-from typing import Any, Dict, Generator, List, Optional
+from collections.abc import Generator
+from contextlib import contextmanager
+from datetime import UTC, datetime
+from typing import Any
 
 # Ensure root workspace directory is in sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from inference_service.schemas import (
-    BorrowerBucket,
     CallOutcome,
     CollectionsCallEvent,
     DLQRecord,
     DLQStats,
     DLQStatus,
-    ProductType,
 )
 
 logger = logging.getLogger("inference_service.dlq_handler")
@@ -32,7 +31,7 @@ class DLQHandler:
     Persistent Dead-Letter Queue & Call Compliance Audit Store backed by SQLite.
     Guarantees zero dropped or unlogged calls in collections operations.
     """
-    def __init__(self, db_path: Optional[str] = None):
+    def __init__(self, db_path: str | None = None):
         self.db_path = db_path or os.getenv("DLQ_DB_PATH", DEFAULT_DB_PATH)
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self._init_db()
@@ -109,10 +108,10 @@ class DLQHandler:
         retries: int,
         latency_ms: float,
         cb_state: str,
-        error_detail: Optional[str] = None,
+        error_detail: str | None = None,
     ):
         """Logs every call event to the compliance audit store."""
-        now_iso = datetime.now(timezone.utc).isoformat()
+        now_iso = datetime.now(UTC).isoformat()
         with self._connection() as conn:
             conn.execute(
                 """
@@ -143,12 +142,12 @@ class DLQHandler:
         event: CollectionsCallEvent,
         failure_reason: str,
         retries_attempted: int,
-        raw_payload: Optional[Dict[str, Any]] = None,
+        raw_payload: dict[str, Any] | None = None,
     ) -> DLQRecord:
         """
         Persists a dropped or failed call event into the inspectable DLQ store.
         """
-        now_iso = datetime.now(timezone.utc).isoformat()
+        now_iso = datetime.now(UTC).isoformat()
         payload_dict = raw_payload or event.model_dump(mode="json")
         payload_json = json.dumps(payload_dict)
 
@@ -191,7 +190,7 @@ class DLQHandler:
             raise RuntimeError(f"Failed to retrieve newly inserted DLQ record {event.event_id}")
         return record
 
-    def get_record(self, event_id: str) -> Optional[DLQRecord]:
+    def get_record(self, event_id: str) -> DLQRecord | None:
         """Fetch a specific dead letter entry by event_id."""
         with self._connection() as conn:
             cursor = conn.execute(
@@ -204,14 +203,14 @@ class DLQHandler:
 
     def list_records(
         self,
-        status: Optional[str] = None,
-        campaign_id: Optional[str] = None,
+        status: str | None = None,
+        campaign_id: str | None = None,
         limit: int = 50,
         offset: int = 0,
-    ) -> List[DLQRecord]:
+    ) -> list[DLQRecord]:
         """Inspect DLQ records with filtering and pagination."""
         query = "SELECT * FROM dead_letters WHERE 1=1"
-        params: List[Any] = []
+        params: list[Any] = []
 
         if status:
             query += " AND status = ?"
@@ -228,7 +227,7 @@ class DLQHandler:
             rows = cursor.fetchall()
             return [self._row_to_record(row) for row in rows]
 
-    def list_audit_logs(self, limit: int = 50, offset: int = 0) -> List[dict]:
+    def list_audit_logs(self, limit: int = 50, offset: int = 0) -> list[dict]:
         """Inspect all past processed call events."""
         with self._connection() as conn:
             cursor = conn.execute(
@@ -284,10 +283,10 @@ class DLQHandler:
         event_id: str,
         success: bool,
         outcome: str = "connected",
-        failure_reason: Optional[str] = None,
+        failure_reason: str | None = None,
     ) -> bool:
         """Mark record as replayed or update failure status."""
-        now_iso = datetime.now(timezone.utc).isoformat()
+        now_iso = datetime.now(UTC).isoformat()
         with self._connection() as conn:
             if success:
                 conn.execute(
@@ -344,7 +343,7 @@ def print_cli_inspection():
     print("\n" + "=" * 80)
     print(f"DATABASE INSPECTION: {handler.db_path}")
     print("=" * 80)
-    print(f"Historical Call Audit Log:")
+    print("Historical Call Audit Log:")
     print(f"  • Total Calls Recorded : {audit_summary['total_historical_calls']}")
     print(f"  • Successful Calls     : {audit_summary['successful_calls']}")
     print(f"  • Degraded to DLQ      : {audit_summary['degraded_dlq_calls']}")
@@ -358,7 +357,7 @@ def print_cli_inspection():
     print("-" * 80)
 
     if dlq_records:
-        print(f"Latest Dead-Letter Records (showing up to 20):")
+        print("Latest Dead-Letter Records (showing up to 20):")
         print(f"{'Event ID':<38} | {'Status':<9} | {'Retries':<7} | {'Reason'}")
         print("-" * 80)
         for r in dlq_records:

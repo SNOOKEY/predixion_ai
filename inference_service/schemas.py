@@ -1,7 +1,7 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import Enum
-from typing import Any, Dict, List, Literal, Optional
-from uuid import UUID
+from typing import Any, Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -35,7 +35,7 @@ class CollectionsCallEvent(BaseModel):
     borrower_bucket: BorrowerBucket = Field(..., description="Days past due bucket")
     product_type: ProductType = Field(..., description="Financial product category")
     timestamp: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc),
+        default_factory=lambda: datetime.now(UTC),
         description="ISO-8601 formatted timestamp of the event",
     )
     call_duration_s: int = Field(default=0, ge=0, description="Duration of call in seconds")
@@ -60,10 +60,10 @@ class CallProcessResponse(BaseModel):
     outcome: CallOutcome
     retries_attempted: int
     circuit_breaker_state: str
-    transcript: Optional[str] = None
-    response_audio_ref: Optional[str] = None
+    transcript: str | None = None
+    response_audio_ref: str | None = None
     total_latency_ms: float
-    error_reason: Optional[str] = None
+    error_reason: str | None = None
 
 
 class DLQStatus(str, Enum):
@@ -84,9 +84,9 @@ class DLQRecord(BaseModel):
     failure_reason: str
     created_at: str
     status: DLQStatus
-    replayed_at: Optional[str] = None
-    replay_outcome: Optional[str] = None
-    payload: Dict[str, Any]
+    replayed_at: str | None = None
+    replay_outcome: str | None = None
+    payload: dict[str, Any]
 
 
 class DLQStats(BaseModel):
@@ -94,11 +94,11 @@ class DLQStats(BaseModel):
     pending_records: int
     replayed_records: int
     discarded_records: int
-    failure_breakdown: Dict[str, int]
+    failure_breakdown: dict[str, int]
 
 
 class ReplayResult(BaseModel):
     total_attempted: int
     successful_replays: int
     failed_replays: int
-    replayed_events: List[Dict[str, Any]]
+    replayed_events: list[dict[str, Any]]

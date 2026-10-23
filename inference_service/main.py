@@ -1,16 +1,17 @@
 import logging
 import os
 import time
-from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException, Query, status
+import httpx
 import uvicorn
+from fastapi import FastAPI, HTTPException, Query, status
 
 from inference_service.dlq_handler import DLQHandler
 from inference_service.pipeline_client import (
     CircuitBreaker,
     CircuitBreakerOpenError,
     HttpMockPipelineClient,
+    PipelineException,
     ResilientPipelineClient,
     RetriesExhaustedError,
 )
@@ -18,7 +19,6 @@ from inference_service.schemas import (
     CallOutcome,
     CallProcessRequest,
     CallProcessResponse,
-    CollectionsCallEvent,
     DLQRecord,
     DLQStats,
     ReplayResult,
@@ -225,10 +225,10 @@ async def get_call_history_summary():
 # =====================================================================
 # Dead-Letter Queue (DLQ) Inspection & Replay (Task 2)
 # =====================================================================
-@app.get("/dlq", response_model=List[DLQRecord], tags=["DLQ"])
+@app.get("/dlq", response_model=list[DLQRecord], tags=["DLQ"])
 async def list_dead_letters(
-    status: Optional[str] = Query(None, description="Filter by status: PENDING, REPLAYED, DISCARDED"),
-    campaign_id: Optional[str] = Query(None, description="Filter by campaign ID"),
+    status: str | None = Query(None, description="Filter by status: PENDING, REPLAYED, DISCARDED"),
+    campaign_id: str | None = Query(None, description="Filter by campaign ID"),
     limit: int = Query(50, ge=1, le=500),
     offset: int = Query(0, ge=0),
 ):
@@ -246,7 +246,7 @@ async def get_dlq_stats():
 
 @app.post("/dlq/replay", response_model=ReplayResult, tags=["DLQ"])
 async def replay_dead_letters(
-    campaign_id: Optional[str] = Query(None, description="Replay pending events for specific campaign"),
+    campaign_id: str | None = Query(None, description="Replay pending events for specific campaign"),
     limit: int = Query(50, ge=1, le=200),
 ):
     """
@@ -276,7 +276,7 @@ async def replay_dead_letters(
             replayed_details.append(
                 {"event_id": record.event_id, "status": "replayed", "latency_ms": res.latency_ms}
             )
-        except Exception as exc:
+        except (PipelineException, httpx.RequestError) as exc:
             dlq_handler.mark_replayed(
                 event_id=record.event_id,
                 success=False,
@@ -317,7 +317,7 @@ async def replay_single_dead_letter(event_id: str):
             "status": "replayed",
             "latency_ms": res.latency_ms,
         }
-    except Exception as exc:
+    except (PipelineException, httpx.RequestError) as exc:
         dlq_handler.mark_replayed(
             event_id=record.event_id,
             success=False,

@@ -1,13 +1,11 @@
 import asyncio
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from enum import Enum
 import logging
 import os
 import random
 import time
-from typing import Optional
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from enum import Enum
 
 import httpx
 
@@ -22,7 +20,6 @@ class CircuitBreakerState(str, Enum):
 
 class PipelineException(Exception):
     """Base exception for pipeline communication issues."""
-    pass
 
 
 class DownstreamServiceError(PipelineException):
@@ -35,7 +32,6 @@ class DownstreamServiceError(PipelineException):
 
 class CircuitBreakerOpenError(PipelineException):
     """Raised when request is fast-failed because circuit breaker is in OPEN state."""
-    pass
 
 
 class RetriesExhaustedError(PipelineException):
@@ -52,7 +48,7 @@ class PipelineResult:
     transcript: str
     response_audio_ref: str
     latency_ms: float
-    error_reason: Optional[str] = None
+    error_reason: str | None = None
 
 
 class CircuitBreaker:
@@ -83,20 +79,19 @@ class CircuitBreaker:
     @property
     def state(self) -> CircuitBreakerState:
         # Check for automatic transition from OPEN to HALF_OPEN upon timeout expiry
-        if self._state == CircuitBreakerState.OPEN:
-            if time.time() - self._last_state_change >= self.recovery_timeout:
-                self._state = CircuitBreakerState.HALF_OPEN
-                self._consecutive_successes = 0
-                self._last_state_change = time.time()
-                logger.info("Circuit Breaker transitioned to HALF_OPEN (probing downstream)")
+        if (
+            self._state == CircuitBreakerState.OPEN
+            and time.time() - self._last_state_change >= self.recovery_timeout
+        ):
+            self._state = CircuitBreakerState.HALF_OPEN
+            self._consecutive_successes = 0
+            self._last_state_change = time.time()
+            logger.info("Circuit Breaker transitioned to HALF_OPEN (probing downstream)")
         return self._state
 
     async def can_execute(self) -> bool:
         async with self._lock:
-            current_state = self.state
-            if current_state == CircuitBreakerState.OPEN:
-                return False
-            return True
+            return self.state != CircuitBreakerState.OPEN
 
     async def record_success(self):
         async with self._lock:
@@ -156,14 +151,13 @@ class BasePipelineClient(ABC):
     @abstractmethod
     async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
         """Process STT -> LLM -> TTS inference for given call event."""
-        pass
 
 
 class HttpMockPipelineClient(BasePipelineClient):
     """
     Concrete client calling the mock HTTP service specified in Appendix B.
     """
-    def __init__(self, base_url: Optional[str] = None, timeout_s: float = 5.0):
+    def __init__(self, base_url: str | None = None, timeout_s: float = 5.0):
         self.base_url = (base_url or os.getenv("MOCK_PIPELINE_URL", "http://localhost:8001")).rstrip("/")
         self.timeout_s = timeout_s
 
@@ -233,7 +227,7 @@ class ResilientPipelineClient(BasePipelineClient):
     def __init__(
         self,
         underlying_client: BasePipelineClient,
-        circuit_breaker: Optional[CircuitBreaker] = None,
+        circuit_breaker: CircuitBreaker | None = None,
         max_retries: int = 3,
         base_delay_s: float = 0.2,
         max_delay_s: float = 2.0,
@@ -255,7 +249,7 @@ class ResilientPipelineClient(BasePipelineClient):
                 f"Circuit breaker is OPEN. Downstream service unavailable. Fast-failing event {event_id}."
             )
 
-        last_exception: Optional[Exception] = None
+        last_exception: Exception | None = None
         attempt = 0
 
         while attempt <= self.max_retries:

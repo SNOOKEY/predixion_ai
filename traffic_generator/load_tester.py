@@ -1,19 +1,19 @@
 import argparse
 import asyncio
-from datetime import datetime, timezone
 import json
 import logging
 import os
 import random
 import sys
 import time
-from typing import List, Optional
 import uuid
+from datetime import UTC, datetime
 
 # Ensure root workspace directory is in sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import httpx
+
 from inference_service.dlq_handler import print_cli_inspection
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -50,12 +50,12 @@ def get_target_rate_for_simulated_hour(hour_of_day: float) -> float:
         return 10.0
 
 
-def create_synthetic_event(base_event: Optional[dict] = None) -> dict:
+def create_synthetic_event(base_event: dict | None = None) -> dict:
     """Creates a call event with a guaranteed unique UUID so each event is independently audited."""
     if base_event:
         event_copy = dict(base_event)
         event_copy["event_id"] = str(uuid.uuid4())
-        event_copy["timestamp"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        event_copy["timestamp"] = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
         return event_copy
 
     return {
@@ -63,14 +63,14 @@ def create_synthetic_event(base_event: Optional[dict] = None) -> dict:
         "campaign_id": "CAMP-2026-09-A",
         "borrower_bucket": random.choices(BORROWER_BUCKETS, weights=[0.6, 0.2, 0.15, 0.05], k=1)[0],
         "product_type": random.choice(PRODUCT_TYPES),
-        "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "call_duration_s": random.randint(30, 90),
         "outcome": "connected",
         "retry_count": 0,
     }
 
 
-async def send_single_call(client: httpx.AsyncClient, target_url: str, event_data: Optional[dict] = None) -> dict:
+async def send_single_call(client: httpx.AsyncClient, target_url: str, event_data: dict | None = None) -> dict:
     event = create_synthetic_event(event_data)
     payload = {
         "event": event,
@@ -98,7 +98,7 @@ async def send_single_call(client: httpx.AsyncClient, target_url: str, event_dat
                 "status": f"HTTP_{resp.status_code}",
                 "latency_ms": latency,
             }
-    except Exception as exc:
+    except (httpx.RequestError, httpx.HTTPError) as exc:
         latency = (time.time() - t0) * 1000.0
         return {
             "success": False,
@@ -109,26 +109,28 @@ async def send_single_call(client: httpx.AsyncClient, target_url: str, event_dat
         }
 
 
+def load_dataset_records(dataset_file: str | None) -> list[dict]:
+    """Synchronously load pre-generated dataset records."""
+    if dataset_file and os.path.exists(dataset_file):
+        with open(dataset_file, encoding="utf-8") as f:
+            return json.load(f)
+    return []
+
+
 async def run_traffic_profile(
     target_url: str,
     simulated_hours: float = 24.0,
     compression_factor: float = 60.0,
-    dataset_file: Optional[str] = None,
+    events_pool: list[dict] | None = None,
     quick_test: bool = False,
 ):
     print("=" * 80)
     print("Predixion AI Voice Agent — Appendix C Traffic Replay Engine")
     print(f"Target Service URL   : {target_url}")
     print(f"Simulated Profile    : {simulated_hours:.1f} hours (Compression: {compression_factor}x)")
-    if dataset_file and os.path.exists(dataset_file):
-        print(f"Input Dataset        : {dataset_file}")
+    if events_pool:
+        print(f"Loaded {len(events_pool)} events from dataset pool.")
     print("=" * 80)
-
-    events_pool = []
-    if dataset_file and os.path.exists(dataset_file):
-        with open(dataset_file, "r", encoding="utf-8") as f:
-            events_pool = json.load(f)
-        print(f"Loaded {len(events_pool)} events from dataset.")
 
     if quick_test:
         count = min(30, len(events_pool)) if events_pool else 30
@@ -154,7 +156,7 @@ async def run_traffic_profile(
     total_real_duration_s = simulated_hours * real_seconds_per_simulated_hour
     start_time = time.time()
 
-    all_results: List[dict] = []
+    all_results: list[dict] = []
     event_idx = 0
 
     async with httpx.AsyncClient(limits=httpx.Limits(max_connections=100, max_keepalive_connections=50)) as client:
@@ -192,7 +194,7 @@ async def run_traffic_profile(
     _print_summary(all_results, target_url)
 
 
-def _print_summary(results: List[dict], target_url: str):
+def _print_summary(results: list[dict], target_url: str):
     if not results:
         print("No calls executed.")
         return
@@ -231,7 +233,7 @@ def _print_summary(results: List[dict], target_url: str):
             print(f"  • Total Historical In DLQ       : {dlq.get('total_records')} (Pending: {dlq.get('pending_records')}, Replayed: {dlq.get('replayed_records')})")
             print(f"  • Failure Reasons Breakdown     : {dlq.get('failure_breakdown')}")
             print("=" * 80)
-    except Exception as exc:
+    except (httpx.RequestError, httpx.HTTPError) as exc:
         print(f"Could not fetch metrics: {exc}")
 
 
@@ -249,12 +251,13 @@ if __name__ == "__main__":
     if args.inspect:
         print_cli_inspection()
     else:
+        dataset_records = load_dataset_records(args.dataset)
         asyncio.run(
             run_traffic_profile(
                 target_url=args.url,
                 simulated_hours=args.hours,
                 compression_factor=args.compression,
-                dataset_file=args.dataset,
+                events_pool=dataset_records,
                 quick_test=args.quick,
             )
         )
