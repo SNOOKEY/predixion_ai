@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mock_dependency:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["uvicorn", "mock_dependency.main:app", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - FAILURE_RATE=0.20
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  inference_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["uvicorn", "inference_service.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MOCK_PIPELINE_URL=http://mock_dependency:8001
+      - DLQ_DB_PATH=/app/data/dead_letters.db
+      - CB_FAILURE_THRESHOLD=5
+      - CB_RECOVERY_TIMEOUT_S=10.0
+      - MAX_RETRIES=3
+      - RETRY_BASE_DELAY_S=0.2
+      - RETRY_MAX_DELAY_S=2.0
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      mock_dependency:
+        condition: service_healthy
+
+networks:
+  default:
+    name: predixion_net
