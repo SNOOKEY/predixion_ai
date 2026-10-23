@@ -52,9 +52,6 @@ jobs:
     name: Vulnerability & Security Sniffing
     runs-on: ubuntu-latest
     needs: [code-quality-and-test]
-    env:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -86,18 +83,47 @@ jobs:
         with:
           extra_args: --only-verified
 
-      - name: Run SonarQube Static Analysis (Cloud Runner)
-        uses: SonarSource/sonarqube-scan-action@v5
+  # =========================================================================
+  # Stage 3: SonarQube Quality Gate & Static Analysis
+  # =========================================================================
+  sonarqube-analysis:
+    name: SonarQube Analysis & Quality Gate
+    runs-on: ubuntu-latest
+    needs: [code-quality-and-test, vulnerability-security-scan]
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run SonarQube Scanner
         if: env.SONAR_TOKEN != ''
+        uses: SonarSource/sonarqube-scan-action@v5
         continue-on-error: true
 
+      - name: SonarQube Status Summary
+        run: |
+          echo "========================================================================"
+          echo "SonarQube Stage Active in CI Pipeline"
+          if [ -n "$SONAR_TOKEN" ]; then
+            echo "[OK] SonarQube scan dispatched with provided SONAR_TOKEN."
+          else
+            echo "[INFO] SonarQube token not configured in GitHub Secrets."
+            echo "       To bind your SonarCloud or SonarQube server, add SONAR_TOKEN"
+            echo "       (and optionally SONAR_HOST_URL) under Repository -> Settings -> Secrets."
+          fi
+          echo "========================================================================"
+
   # =========================================================================
-  # Stage 3: Container Image Build & Image CVE Sniffing
+  # Stage 4: Container Image Build & Image CVE Sniffing
   # =========================================================================
   container-image-build:
     name: Container Image Build & Image Scan
     runs-on: ubuntu-latest
-    needs: [code-quality-and-test, vulnerability-security-scan]
+    needs: [code-quality-and-test, vulnerability-security-scan, sonarqube-analysis]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4

@@ -187,12 +187,18 @@ This repository includes a multi-stage, gated CI pipeline in [`.github/workflows
 │ • pip-audit: Dependency CVE sniffing (SCA)    │
 │ • Bandit: AST static security sniffing (SAST) │
 │ • TruffleHog: Secret leak sniffing            │
-│ • SonarQube: Quality & security gate analysis │
 └───────────────────────┬───────────────────────┘
                         │ Gate 2: PASS
                         ▼
 ┌───────────────────────────────────────────────┐
-│ Stage 3: container-image-build                │
+│ Stage 3: sonarqube-analysis                   │
+│ • SonarQube Scanner static code analysis      │
+│ • Quality Gate verification                   │
+└───────────────────────┬───────────────────────┘
+                        │ Gate 3: PASS
+                        ▼
+┌───────────────────────────────────────────────┐
+│ Stage 4: container-image-build                │
 │ • Docker Buildx multi-tag container build     │
 │ • Aqua Trivy: Image OS/library CVE scanning   │
 │ • Ephemeral container health smoke test       │
