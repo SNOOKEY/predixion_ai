@@ -1,0 +1,5002 @@
+[
+  {
+    "event_id": "790493f0-134d-46d9-ae79-04aab515ba88",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:00:19Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f9915528-f411-4835-b42f-252eb3ad92c1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:00:47Z",
+    "call_duration_s": 86,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1ae5bc9e-afe4-4a85-a054-f26a6838ec35",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:03:35Z",
+    "call_duration_s": 132,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "c6663ea0-d251-4f47-ae3f-20ddac6b21cc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:04:27Z",
+    "call_duration_s": 100,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4d26ad4b-1902-486b-9299-392765f0f298",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:05:03Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6db6a2a2-0727-4179-8920-50a711cca6a7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:05:12Z",
+    "call_duration_s": 79,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8fce0f63-bd21-4aa7-998d-afa7da8d2801",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:06:24Z",
+    "call_duration_s": 97,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "50120a1d-712c-4896-a2ef-1551b79216ec",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:06:36Z",
+    "call_duration_s": 201,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "83232c7a-adfa-4ffa-8733-ca913ffb5efe",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:06:53Z",
+    "call_duration_s": 87,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4fcacc34-6a1b-4fff-b8fb-aec77a8e163b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:07:05Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "aca95a39-6f94-4cc0-85a1-36ebe043b9d1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:07:20Z",
+    "call_duration_s": 97,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "4aac9f16-d1f3-4592-99a3-6ad53610cc52",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:10:15Z",
+    "call_duration_s": 67,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "45484517-fd9b-41e0-9740-d77227719c83",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:11:36Z",
+    "call_duration_s": 110,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f55ca971-7ef8-477e-9e29-b1f842ecdb2d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:11:44Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b67cb910-be9f-4930-830b-d2409cec5474",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:12:14Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6fe70cd0-366a-4017-b63f-4ea7f08f4f85",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:13:58Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "620f7c76-00ac-48eb-a3f2-0eb74f2f4e19",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:15:00Z",
+    "call_duration_s": 92,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "062d2993-642f-42e6-ba41-62cfef786fd2",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:16:16Z",
+    "call_duration_s": 110,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e4eaddd2-517e-4f79-98c1-19eb7d96289d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:16:46Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "81ce2ef5-57ec-471f-99f9-2a6eb4584536",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:19:06Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "2225fdb9-2f7e-486a-a0f6-2a8c939d8bb1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:19:40Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "2d69e5d6-4a67-4862-a5bc-3ba3a3207376",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:20:17Z",
+    "call_duration_s": 122,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "69614c23-1fdd-4361-8350-42462e368356",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:22:42Z",
+    "call_duration_s": 66,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8884673a-8890-4332-9950-4c7cbb05f663",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:23:59Z",
+    "call_duration_s": 46,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b5937f26-b4bf-45b9-bb89-ac0b1de90113",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:25:17Z",
+    "call_duration_s": 116,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d93278ec-ce17-4bf5-a632-428d14e4fcf8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:26:30Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a090042b-128a-4051-b5e9-c6414f3d2eb3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:31:25Z",
+    "call_duration_s": 54,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4b8287fb-f67f-41fe-9dc4-4f5a8d5f96e0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:33:02Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "6b5cac0e-9f9a-4a9b-afb7-3e170784bc9e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:34:44Z",
+    "call_duration_s": 115,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c34d31fb-3dfa-42e1-ba00-d3398ce02db7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:35:41Z",
+    "call_duration_s": 84,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "97b30add-6054-4882-8f3f-f3dcfab9377a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:35:45Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e706e128-178f-42a9-bf73-09716ae9c0d8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:38:24Z",
+    "call_duration_s": 157,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "98a85c84-b3b3-46ee-b832-0d3e6431dbff",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:39:32Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "428cf306-d61f-40a0-aa75-e322e028bb37",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:39:45Z",
+    "call_duration_s": 81,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d6fdbea7-7e73-4943-bd33-e62a0f1c0564",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:41:23Z",
+    "call_duration_s": 34,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a040129a-89f6-4c43-8a29-5b78ae7f2862",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:42:51Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b17d4ad2-ef69-4874-b4bc-cd7c60046bef",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:45:50Z",
+    "call_duration_s": 38,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fab8b91e-bbf8-4721-aa4d-517c8926e17f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T08:45:54Z",
+    "call_duration_s": 155,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "cc588fc6-97f1-4435-ae9c-b04377e141bf",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:46:59Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "88d5199f-e2c5-44c8-a624-18eb15642875",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:50:30Z",
+    "call_duration_s": 48,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "301e6de3-917a-449c-aebd-ef4da984fcfd",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:50:47Z",
+    "call_duration_s": 77,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e43c5ca8-cce1-418e-82cf-05519a0b85b6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:50:58Z",
+    "call_duration_s": 42,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e52a053c-597f-4b01-99d6-95acd203ea2e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T08:55:40Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b721e5ba-6225-4636-b9f1-24956d87878d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T08:56:38Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e8c43bea-85e4-4b70-b483-f3d4282a9688",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:03:48Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "3b5c4d3c-2d29-483a-bd2b-6521331bb171",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:06:19Z",
+    "call_duration_s": 115,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b9e1787d-15e2-4007-9178-ba8f716d2851",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:07:22Z",
+    "call_duration_s": 47,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "640c9fed-dee9-49cb-86af-2ebeb24186dc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:07:22Z",
+    "call_duration_s": 91,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5ed2caaf-7937-4f0d-9658-4e537b20c304",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:07:42Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1d33bf79-4bff-4fed-b1d9-46a0a996156d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:08:02Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "83aabab0-5fcb-4ac5-ade8-bac7d8d0f833",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:08:23Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "06352892-104f-4651-8bfe-3b2d84e692f4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:09:11Z",
+    "call_duration_s": 41,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6455d910-575b-4175-8c40-e4e58f8ca526",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:09:20Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a34a2597-21e4-4162-a303-a0d8e065d8d6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:10:55Z",
+    "call_duration_s": 90,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6d985324-f8be-4d50-a383-a49de1b96546",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:12:18Z",
+    "call_duration_s": 46,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d87760b1-cdc4-4939-b9d3-384450a40cba",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:13:33Z",
+    "call_duration_s": 90,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "7794224d-fd65-4253-bc0f-c6217f5764a0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:14:55Z",
+    "call_duration_s": 55,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "393f65db-bde3-4b04-bea7-de607b535df5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:15:01Z",
+    "call_duration_s": 95,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "5d978ff6-cfc8-4627-887e-b95f209b76ac",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:16:57Z",
+    "call_duration_s": 161,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "bc408c09-00c3-4ec1-904d-d4b7efe46ead",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:19:49Z",
+    "call_duration_s": 68,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "642108a2-575f-45d7-afea-08cf23fe06d5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:22:32Z",
+    "call_duration_s": 65,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "01e0e6e8-c819-4f15-babb-eb66c367a9f3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:24:18Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "93b95d57-8022-4e1d-9850-1b78b058cc78",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:24:34Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "b67193ff-fc30-499e-b8a8-400c223f921a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:25:11Z",
+    "call_duration_s": 90,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "82fe23a9-7174-4332-b5ad-d7405bee1bf9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:26:12Z",
+    "call_duration_s": 86,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "236fd77e-681d-4a00-9d74-30ac1cb35f3b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:26:55Z",
+    "call_duration_s": 73,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9ac0a241-99f2-4a4f-8af8-70540b0e373b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:28:14Z",
+    "call_duration_s": 101,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "2804045d-b6d2-437c-aa57-480fa791d83b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:28:20Z",
+    "call_duration_s": 89,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "7a11e9c8-2c9a-4672-96fe-56ab31d6fe8b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:29:27Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "30c4db7e-72f8-4f48-b868-a69934fbe17b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:29:32Z",
+    "call_duration_s": 227,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6d1ccfd2-3146-4c50-8dde-70a668031e01",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:33:16Z",
+    "call_duration_s": 72,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b7115946-bee4-4999-b1b9-7f9c02973cac",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:34:12Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "f2bcfb9a-66bc-4159-9a5a-806cb37df519",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:35:10Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "be51be98-2fad-473f-a34a-880f0e11990c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:36:48Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "83e1306c-4158-40f3-afd8-6839b2afa67e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:40:22Z",
+    "call_duration_s": 92,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a7daef39-f142-4696-9f29-ac836d76da54",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:40:58Z",
+    "call_duration_s": 80,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "cad9e2c8-84c4-4b28-82c3-6017fd9dace2",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:41:44Z",
+    "call_duration_s": 55,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a68fdfe8-8549-447a-9d62-458e4d3eefe1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:42:19Z",
+    "call_duration_s": 39,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fa48bebb-fc5f-42fa-b32d-8f53d095bdcb",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:43:41Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "e94a5041-17fc-464c-94df-fddcac5b27d3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:44:28Z",
+    "call_duration_s": 138,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a542df4c-1484-4972-bab0-324636f17498",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:45:18Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a29c4791-cf51-47a9-b948-f07f30f05ec4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:47:12Z",
+    "call_duration_s": 96,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "184ab565-c009-4155-be3d-d690d1e7e579",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:48:14Z",
+    "call_duration_s": 68,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ebdcfaf0-aef6-4dc9-af4b-ae18be26a4f6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:49:54Z",
+    "call_duration_s": 158,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3af213ee-d0c2-4db3-b3f9-d44c8a949df9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:51:14Z",
+    "call_duration_s": 87,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c0efb413-134b-40ae-968a-fd7b5d91ed3b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:51:47Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "23f43be8-6bde-48e1-8cc4-0561d7c4080b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:52:06Z",
+    "call_duration_s": 107,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "7aa39c4b-87d9-444b-b2aa-60e6943390d7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:52:13Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "35150f53-9109-4edd-b59b-4097daf536a5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:54:03Z",
+    "call_duration_s": 44,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1ad4ea59-b615-44df-9044-0ac4f2c1d49a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T09:54:39Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "61a94c12-4a33-43c3-8d7a-096d8c62eb48",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T09:54:44Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "635e187f-6cb0-4654-bb08-83bd501fe405",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T09:55:11Z",
+    "call_duration_s": 113,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8c86599a-cbff-4e94-b11c-53afa961b14f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:03:53Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "8a11de9a-7802-4f7d-b36b-3d4ea3c967ed",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:04:24Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d9bdb805-bf3b-4e28-bc53-5536b8cc9112",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:04:40Z",
+    "call_duration_s": 112,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "d36915e8-7450-4656-929e-5432f304531f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:06:15Z",
+    "call_duration_s": 51,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5585ae3c-c790-41dc-8d87-6ac72b1a4c0d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:06:48Z",
+    "call_duration_s": 67,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a1e2b042-8178-4e2d-ba5e-c21a937b4cfc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:10:56Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d0b9a205-2e3e-45a3-ad7e-0572990664e3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:12:45Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "91d7dd26-2668-4465-99bd-435e52917f13",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:16:06Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "084f3a99-ca0b-4f9d-90d1-a7bbe83c97ac",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:17:19Z",
+    "call_duration_s": 49,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d7ee2042-bb97-4719-9077-ee3d0d2408d7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:17:51Z",
+    "call_duration_s": 44,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "932276d7-e95e-45f6-915d-f73bd8ae66c0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:17:58Z",
+    "call_duration_s": 111,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5ad73c03-d41e-4e13-b4b0-32ad83c3c584",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:18:49Z",
+    "call_duration_s": 71,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "751653da-6813-4f76-9bc8-703a4ae31754",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:19:07Z",
+    "call_duration_s": 161,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "83b1fda7-78e4-4660-9bf7-fb511e5ede34",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:19:54Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "28e5387d-e88b-4ad1-9bb1-c39affcdebcb",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:20:29Z",
+    "call_duration_s": 73,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f44ff80c-f2ba-4d1c-acf0-90f0169c0ca8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:20:36Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c9c0c593-ee0d-4181-8b52-33958548f270",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:24:31Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "4d31e499-7986-4477-96fd-9313da8c7d2f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:25:44Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "bb612f18-0823-4ec5-b689-e5c7e2e9a6ce",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:26:33Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "1a12ec77-a69d-434b-ab5d-4407d0075ca0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:27:24Z",
+    "call_duration_s": 104,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "79392ba3-b2e7-4b3d-ab5c-3b0f95040e04",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:27:38Z",
+    "call_duration_s": 111,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "231a952a-713b-47ce-84c9-475b09e36e3d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:28:11Z",
+    "call_duration_s": 220,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "00308381-c8a0-43d6-b335-2785f4d0b42a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:28:27Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "ebaf21b8-bd57-4bd2-a4b5-616033d4baa7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:30:31Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "00468f03-5842-40e2-9b23-425035df7347",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:31:14Z",
+    "call_duration_s": 165,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d82d4bbb-93de-4a2a-9db6-27c61bbd4121",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:31:57Z",
+    "call_duration_s": 98,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d88397e6-c444-4a87-bffa-0ccca91877a3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:32:09Z",
+    "call_duration_s": 59,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "bfdfcba0-0b94-4369-924e-fdec3c083473",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:32:57Z",
+    "call_duration_s": 44,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8cc67e58-a0b5-4eab-821f-dcb3d0fb749e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:33:31Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "b670a3d7-129f-44f3-8895-296964fb5add",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:33:48Z",
+    "call_duration_s": 86,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "60c7246b-8f62-4e03-bd5e-6df65f3d660c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:33:49Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c2a6eb4e-7edb-4043-af62-b9a23bd834ff",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:35:35Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4d5d8d32-4581-446e-8a6b-ed8f438c93de",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:36:55Z",
+    "call_duration_s": 138,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "bb2a6d85-f950-4104-9e44-5f5b73d35aea",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:37:45Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1d8274ad-0eaf-4e21-98e7-d4f09de6a94b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:38:38Z",
+    "call_duration_s": 81,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "bebae744-28ee-464d-b468-f49467fa26c5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:39:57Z",
+    "call_duration_s": 43,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b9b6b0ce-d528-483b-bec3-b38eebd2fa11",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:40:52Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "bf80f014-0a99-439d-b90e-1c6a363ab90e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:40:58Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "1aeaae84-1c22-4320-aa27-d1628c224d44",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:43:13Z",
+    "call_duration_s": 50,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "714f841d-c0a2-4172-bbbd-03e4704dd9a4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:43:39Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "e8b66ff7-c8cc-4dd4-92b0-8891535062a4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:44:08Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "eddb48f3-8405-463b-96c8-2faed266b3b5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:44:21Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "9fceadd6-72fe-43a2-9be7-187e602cd113",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:45:49Z",
+    "call_duration_s": 83,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "4d711f6d-5502-4c51-a850-40ea10211d8c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:46:48Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "466c537e-1779-4df0-bd86-ed79d0fade5f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:48:13Z",
+    "call_duration_s": 79,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "25e6a002-a9cc-49b9-841e-51f74cd55963",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:48:40Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d9e1670d-d0e1-418b-aa16-6172aed8be72",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:49:51Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "86a6d4ae-539b-48a5-bca0-72e83cbd2331",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T10:50:57Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "a744ac46-d740-4b4f-be67-bdd62bb6c1ae",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:52:42Z",
+    "call_duration_s": 125,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "e4766ebe-9d1b-4411-904b-f1592fa20d47",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:55:12Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "89509b4c-73d1-47ff-96aa-ff55de81a35a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T10:55:15Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "f1c56e88-a34e-473a-8bc2-52efe3808afe",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:58:34Z",
+    "call_duration_s": 75,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f380a0bb-f1d7-477f-a8a4-3cdf3c920335",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T10:59:59Z",
+    "call_duration_s": 167,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "182c678a-99af-476d-a84e-8c08fedee01e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:02:42Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "78ee270f-1c6c-4551-af6e-d90ab02794c0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:02:54Z",
+    "call_duration_s": 106,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "77efd8d2-d8e6-4d88-a541-c614501f729f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:04:03Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "777546c4-2583-4a49-b03c-8ac5322d0c20",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:04:22Z",
+    "call_duration_s": 118,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1e09bc12-ede1-4d2c-afba-9da7fa62d74a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:04:56Z",
+    "call_duration_s": 89,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "95102894-c6ec-4b66-98a0-463080e17ac3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:05:08Z",
+    "call_duration_s": 91,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "98e8a6e3-dff6-4b6f-81b2-da74d7bf801b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:11:20Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "65ced66e-baaa-4870-ae0c-54685468821c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:11:21Z",
+    "call_duration_s": 127,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "63280bc6-3db5-4a28-84d3-206476df2b84",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:11:32Z",
+    "call_duration_s": 106,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "282ec402-56f2-4f9f-bd6d-dc42fc55551c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:13:47Z",
+    "call_duration_s": 41,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a099c362-e022-43f3-a64a-f46143dec479",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:13:48Z",
+    "call_duration_s": 70,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "484a9175-16d3-4e41-b2cf-32209ecd098e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:20:07Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "332def7c-04ed-4f25-944e-f182005f3a0d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:20:33Z",
+    "call_duration_s": 104,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "74183169-fa8c-49a0-9e06-0c5e339fa410",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:22:06Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8c421e03-3955-4985-a518-ddfd6d6a3af4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:23:28Z",
+    "call_duration_s": 79,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3cdca789-e1e1-45ef-a0ea-69fd2c9b02d0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:27:07Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9fa03e21-4679-4d38-b334-b03d917bcf73",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:27:59Z",
+    "call_duration_s": 49,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "827d1cd5-1b2f-4402-960e-9a7e0313baad",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:30:10Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6ef08b35-ddcc-43d0-8842-b85bee7d6ad7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:32:26Z",
+    "call_duration_s": 102,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4aa3b8c3-3f4a-46ef-b21c-b92929674036",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:32:45Z",
+    "call_duration_s": 90,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8c65211e-66fd-4da9-9428-d6affc3f1da8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:32:49Z",
+    "call_duration_s": 39,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "7fcf5aee-c3b6-4b14-82f1-1c30dfc8d1d8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:32:59Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "c8056aca-f05d-4a05-9dd5-34cfe1c4bd31",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:33:21Z",
+    "call_duration_s": 106,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3993b8da-a939-4d8f-b40d-cb530fc88948",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:34:17Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "28f7c65c-b7a8-49ba-9407-c0974cc11ac4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:34:42Z",
+    "call_duration_s": 57,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1db4638c-c038-4aa1-a45c-3b7ae2754d79",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:34:55Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "17925f82-78db-4e53-9ccc-98cf63006d55",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:36:54Z",
+    "call_duration_s": 42,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "10faac98-3fe4-4226-b811-f46d094f7662",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:37:17Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "e7d30970-4c70-4a52-87a0-775f4c637607",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:37:39Z",
+    "call_duration_s": 62,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "21e8c1a8-42ba-4aec-b03c-fc6f26c9bd02",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:38:28Z",
+    "call_duration_s": 73,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "bbf8d90d-219a-417d-936c-0e06265e0219",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:40:45Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "c99a52e9-7136-431a-afb0-0cdc3e81da8b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:40:56Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "68bb4465-2eae-4bab-924f-b5aaf47dff50",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:41:15Z",
+    "call_duration_s": 69,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3fd3fdec-7781-413e-8554-deb974fdf31e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:41:37Z",
+    "call_duration_s": 38,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "07281f59-35cd-408d-a0af-65dda36a0590",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:41:55Z",
+    "call_duration_s": 64,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ab1ae4a5-d871-417f-bed7-2e9015e5c2f3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:43:39Z",
+    "call_duration_s": 95,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "71451a24-3c4e-41c2-bab6-f61e59c6b4da",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:47:11Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "5883388f-93f4-4bbe-8ee6-b6d13e2d1d44",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:52:27Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "b944a247-9dfb-452d-9935-af22e88ebb87",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:52:34Z",
+    "call_duration_s": 45,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6ab0e873-e2dd-440f-87d2-12e830bb91f6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:53:21Z",
+    "call_duration_s": 36,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a238881f-0fa3-4dc0-8c35-7a78b4fa3c7c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:53:39Z",
+    "call_duration_s": 73,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "de67fd07-474c-4362-9c7e-b8485b6e010a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:53:54Z",
+    "call_duration_s": 102,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a83ff6fd-5341-41bf-9b55-a9a40aa98781",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:54:32Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b8fb58e2-efd5-43ea-b9bb-2dfd90d0e9b3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T11:55:01Z",
+    "call_duration_s": 53,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5f66605e-4363-4f38-8a27-71e231cdcae2",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T11:57:13Z",
+    "call_duration_s": 112,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "849fae5c-ff08-478e-bb87-3cfa0d7fa9b6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:58:50Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "fb743460-9f41-4ed3-b79a-56307ef5535e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T11:58:55Z",
+    "call_duration_s": 39,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "03ea08da-3626-42a6-b0b3-16f5781c6cd5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:00:54Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a82c252f-0462-494b-8ec2-8c0b24693fe9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:01:14Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "7effc5c8-e39b-47a9-aaab-30615d2c4ada",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:01:14Z",
+    "call_duration_s": 37,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "2b51ed2d-2982-4c28-812c-4c2b23798ccc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:02:06Z",
+    "call_duration_s": 117,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0fe6fbf6-8777-441e-9b77-1dee9b4a7d5a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:03:32Z",
+    "call_duration_s": 32,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "c64d8030-ce40-45f5-a43d-6c7b26a808ee",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:04:49Z",
+    "call_duration_s": 70,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "dca57174-96a9-4b49-a0f7-0b55350ce9d0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:06:22Z",
+    "call_duration_s": 88,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "ce7aa3d2-5983-45a3-b6c6-204a0229a38f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:06:44Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "4348af27-add4-4e9d-b60e-d75faa0e898e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:08:05Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "7dcaf44f-0d28-4261-a7e8-158f2a5380f9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:08:09Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b460f8bc-49b8-436c-820f-c52481b8a87a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:09:07Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "18bfb587-adb1-484a-a100-561295c31a59",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:10:05Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "4022e429-b435-4a67-9f50-ab9bf8b12872",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:10:24Z",
+    "call_duration_s": 83,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "81a39a76-3245-4779-aed2-f95ad3713770",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:10:27Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fa841f54-b505-41ad-844d-6efab193bcb8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:10:44Z",
+    "call_duration_s": 88,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "53fb59a9-c199-4b77-99ae-7fe43841662d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:11:47Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "bf1f28e1-49c7-4de5-8fa5-0616a90b642f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:11:54Z",
+    "call_duration_s": 44,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1882bd5e-8b52-4919-9f54-ea2cc4ceee8d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:13:14Z",
+    "call_duration_s": 52,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "86c4cec4-00de-47cf-9780-3ef849b3e640",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:13:27Z",
+    "call_duration_s": 182,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "32a19903-32d5-4282-8eff-1a93d49824d1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:15:11Z",
+    "call_duration_s": 30,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f8ef7a07-7f4d-499f-93a7-2294095aff14",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:15:50Z",
+    "call_duration_s": 50,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e6e31580-d8d4-4b98-803c-12850751be73",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:21:21Z",
+    "call_duration_s": 34,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "4517527e-b98d-450d-87ec-4c951c844795",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:21:56Z",
+    "call_duration_s": 77,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "35a28dca-26c9-442e-89ca-3e5e8bef761a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:22:02Z",
+    "call_duration_s": 46,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9c4b4e8d-b5f2-49c3-bdfc-ab6c94fe859b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:22:31Z",
+    "call_duration_s": 124,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "7eb4e9a0-8913-480d-b53f-f6968aec7b47",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:24:11Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "766d58f5-f5f8-4c08-85b2-338aa5c770b1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:24:40Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "b868ec7f-b030-4485-b210-3acea94d3bbe",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:27:29Z",
+    "call_duration_s": 110,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c243770e-ccef-47f5-8fe5-22bc47c513e4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:29:56Z",
+    "call_duration_s": 51,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "48ad8c72-af0b-4252-82ba-a02f2014c8ae",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:30:49Z",
+    "call_duration_s": 72,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "df320dc3-1594-4993-8988-15149e2fa87a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:30:55Z",
+    "call_duration_s": 89,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "5eb9b44c-5759-415b-b2b4-481e7eca7ae5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:31:52Z",
+    "call_duration_s": 100,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "be0672cf-bd60-4cba-b4a2-6e1fc82607ea",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:32:26Z",
+    "call_duration_s": 117,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "2978066d-060b-4461-bca9-a04620773df9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:35:48Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "730dbbc6-fcc7-4b52-aab2-006b8279d54c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:36:06Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9a94a660-19ce-4cf3-acb1-db00fbff1423",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:36:17Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b40a42c6-f0eb-4961-8ff8-8f9cdaf5bb38",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:37:30Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "b2163e78-d53d-4571-85e2-b9d39fac971b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:38:31Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fa97771b-f854-4fd9-90ea-c6a1ee915931",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:39:49Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "c948a119-a829-4f29-a9df-21c157909af1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:41:04Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "72df12e9-c82c-4994-ab17-7dc0688d1a72",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:41:13Z",
+    "call_duration_s": 78,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8528392e-2c97-46e2-b3cb-2e24f7facc8c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:42:52Z",
+    "call_duration_s": 97,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d1aeb90d-f052-4526-a37d-efc2341ebaa8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:45:55Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "ccb15fe4-b3b7-45ad-bffa-70202cf44fca",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:51:19Z",
+    "call_duration_s": 35,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a3b8a726-3dba-40ea-b4fc-fa8aef62bfb1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:52:38Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "19ea90c8-4938-489c-ad3f-75c644b53376",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:53:02Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "e53a7bab-a576-4bdb-90c0-9e6a7b97eb67",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:53:13Z",
+    "call_duration_s": 74,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a619cc88-07dd-4d27-b7e7-9f149da7f243",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:54:30Z",
+    "call_duration_s": 102,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c14a0bf1-87f3-4936-96f2-8ed628e7695f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:54:38Z",
+    "call_duration_s": 83,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0b1205fd-0564-4d33-81bf-97934fe0f2de",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:55:17Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f7bdbea7-6195-4b11-a588-aa913bc0c318",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:55:22Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "83aabf3f-b936-4217-a116-b22bf439be1b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:55:44Z",
+    "call_duration_s": 39,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fc11308b-5d96-415c-80ab-9e87247da7e5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T12:56:06Z",
+    "call_duration_s": 44,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e1f077d4-bf76-49f3-bfaf-4830e105be4e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T12:56:17Z",
+    "call_duration_s": 144,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "9192dacb-82c8-4658-ab11-eaa8b65b1535",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T12:56:29Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "d92daec9-501c-4337-8cfb-11cda1876192",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:01:36Z",
+    "call_duration_s": 65,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "01cb2fd3-e69e-4d71-95f4-11a40636d321",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:03:35Z",
+    "call_duration_s": 119,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "18623835-4fed-4758-be74-e802c1a9d2ed",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:03:53Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "899b4788-b9e0-4029-acb0-ee93ef97e055",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:06:25Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "4c56e593-7268-4def-8c66-3bc5576bf2ff",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:07:46Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c26bbf38-0f88-45ec-ac60-9553860acc66",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:07:53Z",
+    "call_duration_s": 40,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b7db47c7-922c-470d-8d42-c8a9cd452fd7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:07:59Z",
+    "call_duration_s": 112,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "89f5d011-6401-4ce5-ac66-ecd6b509f813",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:10:04Z",
+    "call_duration_s": 100,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4b7833ed-d9a0-438b-9f84-743c8f912695",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:13:02Z",
+    "call_duration_s": 102,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e5ed89fc-c70b-4074-bd9f-9ffc6212478d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:18:56Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "ce9ddf49-25b6-48ad-92f6-25eec44aafd9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:20:36Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "96200fe9-6442-4b44-9f6d-658fe79eec5b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:21:14Z",
+    "call_duration_s": 34,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4ae9fc6a-c512-48e0-bd3f-031c0fc8b0e0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:23:41Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "562a9bd5-465e-4c3a-aaa8-08085bffef93",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:25:14Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "6223cd77-4482-45a9-bc13-626a67e69b92",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:27:37Z",
+    "call_duration_s": 121,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "9e05460d-e9db-4294-8e59-c6f6396960b2",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:27:38Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "4e6934ce-3ba5-4432-ae93-58397b596dbf",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:29:31Z",
+    "call_duration_s": 93,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "cea31858-c433-4f7d-894d-52de859f4899",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:30:17Z",
+    "call_duration_s": 39,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c62d0c45-789e-46b0-9be6-8a3870ebd37d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:31:18Z",
+    "call_duration_s": 144,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "227ec248-95c9-43e2-b4eb-a7bd89cad795",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:32:02Z",
+    "call_duration_s": 179,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "310eba65-2de0-44d5-8891-12deca0c2aee",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:33:51Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5a4edfa5-6492-4ccd-9ab1-3603a22ca9df",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:35:53Z",
+    "call_duration_s": 47,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "cf73dd1f-9656-4c09-95a4-451801c163df",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T13:39:46Z",
+    "call_duration_s": 42,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "68d4dbd5-394c-4790-891c-a60d4e53edec",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:39:57Z",
+    "call_duration_s": 126,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "8730e474-882f-4523-84de-1e245e7f0318",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:41:08Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "d1faff89-17f3-4170-86c7-20f9e17997f3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T13:44:01Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "c09be253-5f6b-4499-bcab-0a00b9e9a3e1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T13:46:49Z",
+    "call_duration_s": 62,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "dd374baa-0a22-4a8b-84a0-f6805a7e1d98",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:48:25Z",
+    "call_duration_s": 120,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "79e31ddf-ddff-4062-9877-fb2740a1e994",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T13:49:33Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "efd8bdec-84a4-452e-95c0-96a2d91099dd",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:49:40Z",
+    "call_duration_s": 118,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c3fb094f-21a8-432b-854b-126f7cb62c28",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T13:50:59Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a0857089-4750-4ea7-b4f1-de5c4b63cd5d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T13:53:51Z",
+    "call_duration_s": 103,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4ff00584-312c-430e-9401-c42a717ebb10",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:54:20Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "0e8d9f58-e29d-4dab-b52e-83026178555d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T13:57:48Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "1b1f1c1d-348e-485f-bd09-d092941a9b1d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:58:03Z",
+    "call_duration_s": 78,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "12cefd8e-790c-460a-8814-5c8936ee2a4b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T13:59:19Z",
+    "call_duration_s": 119,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ab676510-f58a-43c9-ae6c-425e95f88930",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:00:09Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fbcb8f75-fc2a-45a2-b218-409e0234b700",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:00:10Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "da2b04ad-1fb1-4a05-bcf3-26d5f641c091",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:01:42Z",
+    "call_duration_s": 115,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0b516103-ac17-4564-8eca-dd10aa5fba40",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:02:12Z",
+    "call_duration_s": 114,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "10a52b7a-b809-405c-9596-2c9c5ddea6da",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:02:34Z",
+    "call_duration_s": 68,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6428fe9e-2fe0-41f6-8bbb-64f45f0fb422",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:02:42Z",
+    "call_duration_s": 45,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "696f1392-61d0-4386-bc06-35776ffa82dc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:03:01Z",
+    "call_duration_s": 99,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "ee665468-f105-4a54-9ebe-a8f8914a181d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:05:23Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3b788554-945c-4886-b0e8-8c33900c7b0d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:06:22Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "094a5aa3-0498-43ad-877b-a01571322db5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:07:05Z",
+    "call_duration_s": 175,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ea179cb3-52d0-4a3d-ad1e-c7982272cb99",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:08:20Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "d4df965f-133a-450d-9076-c71d54df36f8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:08:28Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "fe3896e9-3647-48f4-b55e-812fd284e050",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:09:30Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "4479521c-ed1f-41e3-afc9-65f71c65ef38",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:10:04Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "83b4335d-362a-4edd-b055-ba92396c51dd",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:10:08Z",
+    "call_duration_s": 47,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1556f0bc-6e77-4a9f-8e5b-a3edf49cd7e8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:10:42Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "202df794-0e1d-44ff-91b7-2764b02b7d90",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:11:50Z",
+    "call_duration_s": 47,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8c0cff43-af0a-4055-8471-be9d3f232c56",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:11:53Z",
+    "call_duration_s": 80,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "84988a3c-0e3b-4476-8d70-75ea97485a15",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:12:01Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "38a226b1-9887-4a8f-9690-f4b99daba3a9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:12:56Z",
+    "call_duration_s": 43,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "2a414b63-dad0-428a-9b83-0b2b4f2a1246",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:13:12Z",
+    "call_duration_s": 72,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "096d27be-ba58-4bd1-9377-4874f6029904",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:13:50Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "2a4c860e-33e3-4a71-8558-a99e2866558b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:13:57Z",
+    "call_duration_s": 79,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d197e12e-fd57-4bc4-bfee-fcc83ffad2b1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:14:29Z",
+    "call_duration_s": 94,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "05c81a3b-9c3a-4ec6-be1c-a0673451f19a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:15:55Z",
+    "call_duration_s": 240,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8c133317-6ccc-4496-8077-b2c1676aba05",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:16:23Z",
+    "call_duration_s": 47,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4d9ff21d-19cb-4a36-a7a9-bea31ef686d2",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:18:52Z",
+    "call_duration_s": 105,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "6ae60bf3-db9e-4dee-9e37-5c9b4ffa4e7d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:19:25Z",
+    "call_duration_s": 48,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "e45631ec-d2b4-458a-993e-6d7f1baac971",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:20:00Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "d9c1a78f-c21e-4e0a-a815-7515e937ff25",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:23:59Z",
+    "call_duration_s": 151,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fd67e99c-4d4c-466d-9de5-1405af04efc2",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:26:27Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "a4746966-6dab-450c-852c-ad9ca101d175",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:28:07Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "27a08688-11a1-4224-9ca2-5871ff27cd24",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:28:08Z",
+    "call_duration_s": 69,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "4c304430-1711-4a91-b8af-b3cbadffead4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:29:01Z",
+    "call_duration_s": 147,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "10840cda-27ba-4bc9-82fd-9442b4f4a9a7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:32:21Z",
+    "call_duration_s": 132,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b722bb5a-47f3-46f3-a37c-228e36874714",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:34:14Z",
+    "call_duration_s": 88,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "454b79cb-9509-46df-8d54-3899d4f399bb",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:34:37Z",
+    "call_duration_s": 56,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1b2776e3-d97b-485f-abcb-8a517c565e50",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:38:44Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3f851c10-994c-4727-bba8-79284b38dd1a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:39:51Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "ef961efa-6a70-44bd-be0f-5720dedfbc4e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:46:20Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "78062821-49f3-4fcd-ab02-533cafe0f239",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:47:59Z",
+    "call_duration_s": 138,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "fd7fe2fb-bc75-498b-82a1-bedd7d2a7347",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:49:17Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "a97eb38c-be26-4ae3-9272-276f44025221",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:49:19Z",
+    "call_duration_s": 159,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "57db2e73-3029-469b-82ee-63fefa2fa6cd",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:50:49Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "743a8d14-9998-415f-b135-8a2ffe189df3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:51:50Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "c1d1d093-397e-43f9-a949-3b77c4e61848",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:52:13Z",
+    "call_duration_s": 37,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c62af5e9-2d17-46dc-bcc3-857d25f50590",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:52:29Z",
+    "call_duration_s": 117,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1cd4d9f0-49c1-479b-9510-90a9648c1b57",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:52:29Z",
+    "call_duration_s": 227,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f938a994-d9ad-43fa-891a-51d9b39ca903",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:52:40Z",
+    "call_duration_s": 120,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "b60007dc-7ce2-4d3b-8dbc-adca719872db",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:52:54Z",
+    "call_duration_s": 89,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5d0846db-77ca-449a-8e87-2a2ec72f07f0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T14:53:10Z",
+    "call_duration_s": 30,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "135a6677-f32f-4da2-bc51-a8920b3c3f08",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:53:15Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1b393fb4-35c4-46e0-843f-f1c766dfc132",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:53:22Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "d2a46583-b03f-473e-9b93-b2ab2ccbc214",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:56:28Z",
+    "call_duration_s": 78,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "12f83494-f91f-4464-bfd3-3109039d1574",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T14:58:08Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "8cecd2cc-a2f9-420b-993d-3b759bf6180c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:58:58Z",
+    "call_duration_s": 91,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "826a052f-f00b-4221-8faa-467aeddb152a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T14:59:19Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9c8a69c3-79d8-4ce6-a97d-ca2978da51b2",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:01:08Z",
+    "call_duration_s": 137,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "37e4a209-52b8-499a-b0d3-72547c81f627",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:01:36Z",
+    "call_duration_s": 59,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5a3d873c-d69f-4f26-a893-ccdf9957d886",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:03:20Z",
+    "call_duration_s": 135,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "562867b0-9b3a-4711-bc83-82798d4183c6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:05:41Z",
+    "call_duration_s": 61,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ab70f7a1-6b4b-477a-9799-767d0d0991a8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:05:54Z",
+    "call_duration_s": 141,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "75e4442a-2879-4335-9ae4-85530f00d900",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:07:06Z",
+    "call_duration_s": 138,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "9b8e3a71-197e-477b-8416-e9185fcd69a9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:07:22Z",
+    "call_duration_s": 110,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "799ef4ea-9c06-4efc-930c-fa452889313e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:08:43Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "67d2160d-0c79-476e-bb12-a093cc982660",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:09:26Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a1e61853-fa04-4aba-bed9-b78dd7eca8b8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:10:29Z",
+    "call_duration_s": 102,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "65324b9f-31aa-40d2-a41f-ffb95d733e7b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:11:24Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "277393aa-9818-4c8c-ab9d-b80a09eb6e62",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:13:04Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f99ca94d-6a59-4024-9217-f397f87ae838",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:13:24Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "a1dfa124-2f4b-4751-88a2-76fb4cdc1bc3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:13:36Z",
+    "call_duration_s": 63,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "903a8ead-0ef9-48a9-9e8f-4ef837c492a9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:14:29Z",
+    "call_duration_s": 58,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "57e47198-7194-448a-858d-e337b6aea9a7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:14:56Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1175c9fb-a719-42fb-9b60-9c4fc0a115ec",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:21:39Z",
+    "call_duration_s": 178,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "99ffff66-7c9f-45a1-a628-d56ed8fd7a86",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:22:06Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "61be0e20-76dc-44aa-8dc2-d34b92ca30eb",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:22:10Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "ab363c60-ce8c-4a4c-8d6e-b9d9123748ff",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:22:17Z",
+    "call_duration_s": 31,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b7bf67a8-f550-4635-ab25-aa056a3a1f6f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:26:57Z",
+    "call_duration_s": 63,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "0fefd8a5-dcd0-4396-9bef-b0a86df3e97b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:27:32Z",
+    "call_duration_s": 87,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e70317c7-0619-4a66-838e-31f0e8197d20",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:28:05Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a35e4dc1-289a-4bbf-b86b-9b844b37d76d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:28:30Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f76a2870-7df4-4750-a911-258347be0905",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:29:42Z",
+    "call_duration_s": 50,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8a52987b-10bd-4c02-b5ce-f9354961b33c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:30:44Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "64802689-17a6-44b1-9526-7105dd34b25e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:33:05Z",
+    "call_duration_s": 87,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "21361ef7-5dfc-4d7c-b5d5-801f4a5eb3dd",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:33:31Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "90e6a980-47ab-44a6-8514-97211d813142",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:33:42Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "670d3bbf-07f3-4043-b166-87a5d00ec1ea",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:35:36Z",
+    "call_duration_s": 78,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "cd0cd2b0-3a55-4c2d-892f-29b80d2c5d73",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:40:30Z",
+    "call_duration_s": 99,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ddba03bd-7d27-4e76-b754-c84821528989",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:41:07Z",
+    "call_duration_s": 120,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "9dcde506-a24d-4195-9908-d0f6d508b8e1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:44:03Z",
+    "call_duration_s": 80,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b53481bb-94a3-41b9-bc16-9c140c9f2672",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:44:23Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c8029a10-ef98-4d34-a66c-3f982ec567b7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:44:26Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "caa8a9f4-ea16-473d-9a02-5ecdd1e6019e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:44:31Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "7398f5b8-aa77-402c-998b-9a403355f6ab",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:48:07Z",
+    "call_duration_s": 69,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "24e75f6e-e849-4b8f-90b8-deebf8c5f6e5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:48:14Z",
+    "call_duration_s": 99,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "53e3392a-224e-4f65-9af5-4c520ebe35f0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:48:32Z",
+    "call_duration_s": 47,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e9223caf-c86a-486e-948a-b774eb6b2609",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:49:26Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "901de990-c412-4e9f-bb23-39ffa2875516",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:49:41Z",
+    "call_duration_s": 34,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f2867466-6907-41a0-bb40-9c089f7c933e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:50:34Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "d67c5d06-9ab4-4fe9-8d6c-f58f85e83fee",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:51:02Z",
+    "call_duration_s": 236,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "bf0e4836-b07e-4f6d-8832-b67b31fb62be",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:51:03Z",
+    "call_duration_s": 89,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0e802636-32e3-4546-acad-45ebdfe42249",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T15:51:28Z",
+    "call_duration_s": 45,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "acfdd990-2d0c-436f-a436-84555fdc5dbe",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:51:49Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "9719cf8f-d160-4b13-9c5a-aadb7a7d70c5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:52:17Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "43668092-09b3-4126-a862-8162c06c5870",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:54:09Z",
+    "call_duration_s": 67,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0e2a7ff9-f5ea-4a31-a356-3e2670adbd47",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:55:24Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "459d26ae-e47f-4742-bdfa-4a83e7caa81f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T15:56:33Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "f3447dbe-78fa-403c-b17b-cec97052a2c4",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:58:56Z",
+    "call_duration_s": 37,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "634b08d6-45ac-489e-837a-a50bb767d5aa",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T15:58:58Z",
+    "call_duration_s": 84,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "8a643ae6-7e06-4cfd-8839-67be2db0efb6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:02:28Z",
+    "call_duration_s": 74,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "80d9c5be-df4a-4c96-8c2f-97ddf62e5ef6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:03:03Z",
+    "call_duration_s": 48,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d29fa498-bc3c-4c99-ac9e-ec0215747352",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:04:36Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "a4fc4377-18fb-4a7f-8cd3-6e7f94ac19e1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:06:22Z",
+    "call_duration_s": 159,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "014a6809-9fae-48d5-a04d-2078b18fca9d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:06:54Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "caa393bd-a754-4d27-8f5d-1f1ac9d2d371",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:07:23Z",
+    "call_duration_s": 101,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a2e34a0f-95f0-4c3c-829f-5040065e7c50",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:07:42Z",
+    "call_duration_s": 30,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0db0997d-1f30-4f32-b31d-fc296f354268",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:07:52Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "24be09b2-bae2-4a05-8336-224cb4bf82e3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:08:48Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "1f1ed99a-b999-42a7-96ba-b658da1c68ba",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:09:36Z",
+    "call_duration_s": 94,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1af165fc-9d78-4ce3-a411-5d169c37b64d",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:09:54Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "0f06dff9-d928-41a1-86e0-b061bb1b29a1",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:10:14Z",
+    "call_duration_s": 108,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "2bd4963e-8de9-470a-89c8-efa319236044",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:10:42Z",
+    "call_duration_s": 118,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9d62bce1-4969-4a9c-beeb-d9144d621408",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:11:16Z",
+    "call_duration_s": 39,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5b48a6c5-341c-47a8-b9df-8efb4f4c53ea",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:14:06Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d6bedb49-124d-4e49-a7b1-813e1df707e9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:14:40Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "c0587225-0339-459e-8878-1d224f6b03bf",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:15:43Z",
+    "call_duration_s": 115,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "959180d7-e39e-499d-ae79-8237ce74b54f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:16:47Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "885bc865-85b1-4084-a596-4218c5d0b779",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:17:47Z",
+    "call_duration_s": 104,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "672c58fc-a57a-4b55-ac53-7644032bf404",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:18:21Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "43a2092f-da4b-4078-979f-6ee9ee6d5505",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:20:06Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "e1889e88-7822-4b92-b392-1df6071ceff5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:22:00Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "a6c646b0-58f2-49fc-b19c-c02dcb2a40dc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:23:38Z",
+    "call_duration_s": 83,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "69708fbe-cbb6-4248-84d3-1245a8bcdb94",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:24:10Z",
+    "call_duration_s": 76,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0ca96748-bcc2-42f1-bb52-41045057adf3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:25:24Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "7f6ccf05-4536-4d1c-ae78-1146ba6622f7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:25:33Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "46d27a74-f230-4204-9198-3acec8d4cd50",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:27:14Z",
+    "call_duration_s": 43,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "574c3087-1985-4039-8d12-aa51b508249e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:28:49Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "919ae436-bf72-49de-ab85-ea0782b14117",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:35:05Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ecbd2ad3-0f37-4f4c-b486-061c4944ba13",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:35:34Z",
+    "call_duration_s": 112,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "62da4e9e-4183-4aac-8417-421b3b2bfcd7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:35:37Z",
+    "call_duration_s": 203,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "9a85bc36-56cd-48d5-b29b-23ecfe99120a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:38:56Z",
+    "call_duration_s": 205,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "b4242634-19d2-4e1b-b175-c0e43aa62fb7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:39:12Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "793d7f0d-9804-468f-8c0d-e6fbaeb3772b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:40:42Z",
+    "call_duration_s": 185,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "26feda1a-f025-47cb-b414-37794d296de5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:41:33Z",
+    "call_duration_s": 79,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ec73feb4-b85c-437b-9697-62c5ad2355c3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:42:04Z",
+    "call_duration_s": 101,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f2c9176a-55bc-4893-a90e-3134b143463f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:44:28Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "98701d85-075d-4082-b1d7-5b435502f2b6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:44:34Z",
+    "call_duration_s": 109,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "18403609-bd36-48fb-900d-49d7bcc12a2a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:44:37Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "d1824c8c-4e58-4e3b-916e-57623447b6e9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:44:42Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "b46b9ba5-dcb3-4200-822c-f284e60643af",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:46:34Z",
+    "call_duration_s": 53,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "4c735d39-4143-449a-b0ca-b25a6d560dfd",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:47:21Z",
+    "call_duration_s": 99,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "359372e7-89cd-4e84-8939-0f59a07bc800",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:50:04Z",
+    "call_duration_s": 135,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "789e44ff-9e14-47ba-bb9f-6e7463ed5b7e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:51:02Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "15f1d220-609c-4a6c-b718-29006dcf6965",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:52:11Z",
+    "call_duration_s": 122,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c8ffb04d-06c9-4ad4-9f57-c6bd90327630",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:52:11Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "91c89c71-91e3-41fa-abbf-1c439544ae03",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:53:50Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1830b3aa-fd12-4a12-9e16-1759e721c9c0",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:54:54Z",
+    "call_duration_s": 158,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d61a93c2-75e0-4684-8ee9-d1607149a9b6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:55:07Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "dd9c3b9f-537e-427a-ae7a-48f8000d2bce",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:55:13Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "dec932b0-d84a-4d15-bb83-b1eb94ed5219",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T16:55:52Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "c912d53c-599d-49c3-8ee1-b3b9641d8b33",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:57:02Z",
+    "call_duration_s": 106,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "2971c4b7-bf08-4027-a562-2fde3f9f4356",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T16:58:58Z",
+    "call_duration_s": 120,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "89e4414d-d314-4071-8648-1c2a18a5d704",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T16:59:14Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "0049b91c-23cf-4fb7-a8b4-5c17862e3f8e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:01:26Z",
+    "call_duration_s": 43,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "7f4bf700-f745-4042-823f-10f70495f812",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:03:11Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9ade30f8-4346-44a0-8ba2-5716892c25e9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:03:47Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "101b576b-90c0-485f-92a1-cceb3e1838f3",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:04:21Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "b4877f79-b62c-464f-8eb9-aa1cc1b099bf",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:05:14Z",
+    "call_duration_s": 82,
+    "outcome": "ptp_taken",
+    "retry_count": 1
+  },
+  {
+    "event_id": "218c3159-0ebb-4a0e-8944-e4530b63136e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:05:48Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "fef74ca2-3d02-43e4-8b06-8d8170b4ba33",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:07:23Z",
+    "call_duration_s": 177,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "69eafa63-bc14-4f73-ac38-c3d36283070a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:08:17Z",
+    "call_duration_s": 195,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "008ca1e9-09ac-404d-9c27-267b24a3f383",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:11:22Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "9dd82e75-934a-417f-b7b6-82164b2766be",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:12:05Z",
+    "call_duration_s": 119,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0b5cec3e-d5c6-482d-8b31-9592d7c8f964",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:13:54Z",
+    "call_duration_s": 140,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "78801126-c784-4b7c-b0fb-74b7f3842447",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:14:29Z",
+    "call_duration_s": 62,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "8c259dfe-1ed5-4726-abf8-bc96654a7c0e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:16:12Z",
+    "call_duration_s": 40,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d9fddaec-cb7c-4d56-8aa9-793ab2cbbe2a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:17:20Z",
+    "call_duration_s": 89,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "cca8a477-121f-4e0b-9c60-17db12616fe9",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:17:26Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "0090a8ae-2b6f-46a2-87b0-2c0925ea75cc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:19:17Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "b75ef82b-30e1-4ee8-8f99-d34225d3d445",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:19:57Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "b62d1c11-d618-47ff-98bc-ea7ffd61631e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:20:04Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "76260329-d580-4ec9-ab6d-3001a13db3c5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:21:44Z",
+    "call_duration_s": 170,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "0cb44602-f207-4e2a-be45-8886a18066f5",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:22:43Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d38f0935-bf46-4b54-bf10-b07ab0f02cc6",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:24:24Z",
+    "call_duration_s": 46,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "dacc745b-a676-491d-a326-0a2bc5de2759",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:25:33Z",
+    "call_duration_s": 51,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "608f8f51-8373-4296-83fc-1cb7edbd570c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:26:14Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "86ba711f-bdda-459a-a9ca-c385d2e70000",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:27:12Z",
+    "call_duration_s": 118,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "d0755b63-99b6-401f-8b64-092b611a1830",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:27:27Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "f5402a8e-319c-4c62-b993-e00229d5d1cc",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:27:54Z",
+    "call_duration_s": 86,
+    "outcome": "ptp_taken",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c4c09376-133a-4bf0-9141-74eb6dceabe7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:31:51Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 3
+  },
+  {
+    "event_id": "3f71ff84-69aa-4a9d-9f03-123878cf5c0f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:33:05Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "f5248572-5e58-45ce-9822-7fc671fa762f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:33:50Z",
+    "call_duration_s": 71,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "fbc59e11-5aad-4a6c-a529-0fd1932b1033",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:35:40Z",
+    "call_duration_s": 101,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5585b720-b7f5-4fb5-b25a-5e368e7c749b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:37:47Z",
+    "call_duration_s": 80,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "16b2ed1a-1fb2-440c-9c15-2e4159660949",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:38:00Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "1e1ca9d2-6674-4182-96da-7d3f24738714",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:39:11Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3d7d2d71-27de-4f57-ba56-669f1ba93b58",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:39:36Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "ab773fd8-4a1f-460f-be24-5175cf3ce73b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:40:32Z",
+    "call_duration_s": 109,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "73de815a-12d1-4da9-94a7-fa803fd6bba8",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:41:33Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "942596d5-15bd-446f-a758-405bca501c34",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:44:31Z",
+    "call_duration_s": 57,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "99642ec2-2f8d-4274-8075-085ecbd18678",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:44:56Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3a53eccf-f444-4d4e-9747-8a208abe2cc7",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:48:37Z",
+    "call_duration_s": 187,
+    "outcome": "dispute",
+    "retry_count": 1
+  },
+  {
+    "event_id": "11fa78ff-a769-40da-afa8-5df6400d1200",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:49:04Z",
+    "call_duration_s": 58,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c8178868-b846-4783-a54b-da982f4b86ec",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:49:24Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 1
+  },
+  {
+    "event_id": "05367611-f7d3-49b6-b8de-f59e7403bd75",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:53:14Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "702ff136-bf48-414c-9f81-696798a72527",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:53:17Z",
+    "call_duration_s": 62,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "1c437a90-4909-4cde-83ee-fef480a8019f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:53:43Z",
+    "call_duration_s": 93,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "96b7d22e-53e7-479e-a050-e3ff1a9be11f",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:53:48Z",
+    "call_duration_s": 106,
+    "outcome": "dispute",
+    "retry_count": 0
+  },
+  {
+    "event_id": "f262cbbb-60d9-421d-8030-26b1dcbe813a",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:53:57Z",
+    "call_duration_s": 34,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "5ee0a3b8-2ff2-4450-affe-f215f8dd3dac",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:54:06Z",
+    "call_duration_s": 82,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "73d6faf0-170d-434c-b8cd-1f6984d14bed",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "61-90 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:54:32Z",
+    "call_duration_s": 81,
+    "outcome": "connected",
+    "retry_count": 1
+  },
+  {
+    "event_id": "f8bbdebe-8e33-456d-a086-ddd7f36dfa75",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:55:25Z",
+    "call_duration_s": 101,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "c85a6c06-a526-49fc-8d20-f7ea0d169a02",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:56:01Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 1
+  },
+  {
+    "event_id": "869dbe44-4532-4f01-917e-f651f035dd05",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "bnpl",
+    "timestamp": "2026-09-01T17:56:44Z",
+    "call_duration_s": 114,
+    "outcome": "connected",
+    "retry_count": 0
+  },
+  {
+    "event_id": "3a4e0210-b09f-411e-a35e-4ffc9c0cd17c",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "31-60 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:57:56Z",
+    "call_duration_s": 0,
+    "outcome": "failed_downstream",
+    "retry_count": 2
+  },
+  {
+    "event_id": "5e86bbc5-3bd0-46b9-a2de-017c3e710e0b",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "90+ DPD",
+    "product_type": "personal_loan",
+    "timestamp": "2026-09-01T17:59:03Z",
+    "call_duration_s": 0,
+    "outcome": "no_answer",
+    "retry_count": 0
+  },
+  {
+    "event_id": "42fdfa7a-0771-4e22-9a85-06a8374ee55e",
+    "campaign_id": "CAMP-2026-09-A",
+    "borrower_bucket": "0-30 DPD",
+    "product_type": "credit_card",
+    "timestamp": "2026-09-01T17:59:52Z",
+    "call_duration_s": 33,
+    "outcome": "connected",
+    "retry_count": 0
+  }
+]

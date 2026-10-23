@@ -3,7 +3,8 @@ import os
 import random
 from typing import Optional
 
-from fastapi import FastAPI, Response, status
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 import uvicorn
 
@@ -54,7 +55,6 @@ async def health_check():
 )
 async def process_pipeline(
     payload: PipelineProcessRequest,
-    response: Response,
     force_failure: Optional[bool] = None,
 ):
     """
@@ -62,7 +62,6 @@ async def process_pipeline(
     - 20% independent failure rate returning HTTP 503.
     - Lognormal latency targeting p50 ~ 300ms, p90 ~ 700ms, p99 ~ 1200ms.
     """
-    # 1. Failure injection check (20% probability or explicit query override for tests)
     should_fail = (
         force_failure
         if force_failure is not None
@@ -72,8 +71,10 @@ async def process_pipeline(
     if should_fail:
         # Simulate small network drop or immediate timeout before failing
         await asyncio.sleep(0.05)
-        response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
-        return PipelineErrorResponse(status="error", reason="downstream_timeout")
+        return JSONResponse(
+            status_code=503,
+            content={"status": "error", "reason": "downstream_timeout"},
+        )
 
     # 2. Simulate realistic pipeline latency (Appendix B: mu=5.7, sigma=0.35 in ms)
     # Target distribution: p50 ~ 300ms, p90 ~ 700ms, p99 ~ 1200ms

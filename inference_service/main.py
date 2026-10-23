@@ -1,7 +1,7 @@
 import logging
 import os
 import time
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException, Query, status
 import uvicorn
@@ -32,7 +32,7 @@ logger = logging.getLogger("inference_service")
 
 app = FastAPI(
     title="Collections Voice-Agent Resilient Inference Service",
-    description="Production-grade collections voice inference with circuit breaking, retries, and dead-letter handling.",
+    description="Production-grade collections voice inference with circuit breaking, retries, audit logging, and dead-letter handling.",
     version="1.0.0",
 )
 
@@ -58,7 +58,7 @@ resilient_client = ResilientPipelineClient(
 
 dlq_handler = DLQHandler()
 
-# Metrics counters
+# In-memory session metrics counters
 metrics_counter = {
     "total_calls": 0,
     "successful_calls": 0,
@@ -79,8 +79,10 @@ async def health():
 @app.get("/metrics", tags=["Monitoring"])
 async def metrics():
     stats = dlq_handler.get_stats()
+    audit_summary = dlq_handler.get_audit_summary()
     return {
-        "calls": metrics_counter,
+        "active_instance_session": metrics_counter,
+        "database_historical_totals": audit_summary,
         "circuit_breaker": circuit_breaker.get_status(),
         "dlq": stats.model_dump(),
     }
@@ -96,6 +98,7 @@ async def process_call_event(request: CallProcessRequest):
     """
     Ingests a collections call event, routes through resilient STT/LLM/TTS pipeline.
     On downstream failure or circuit trip, degrades gracefully and routes to DLQ for zero call drops.
+    All events are persistently stored in the SQLite audit log.
     """
     start_time = time.time()
     event = request.event
@@ -108,6 +111,16 @@ async def process_call_event(request: CallProcessRequest):
         )
         total_latency = (time.time() - start_time) * 1000.0
         metrics_counter["successful_calls"] += 1
+
+        # Record in persistent compliance audit log
+        dlq_handler.record_call_audit(
+            event=event,
+            status="success",
+            outcome=event.outcome.value if hasattr(event.outcome, "value") else str(event.outcome),
+            retries=0,
+            latency_ms=round(total_latency, 2),
+            cb_state=circuit_breaker.state.value,
+        )
 
         return CallProcessResponse(
             event_id=event.event_id,
@@ -131,6 +144,17 @@ async def process_call_event(request: CallProcessRequest):
             failure_reason="circuit_breaker_open",
             retries_attempted=0,
             raw_payload=request.model_dump(mode="json"),
+        )
+
+        # Record in persistent compliance audit log
+        dlq_handler.record_call_audit(
+            event=event,
+            status="degraded_dlq",
+            outcome=CallOutcome.FAILED_DOWNSTREAM.value,
+            retries=0,
+            latency_ms=round(total_latency, 2),
+            cb_state=circuit_breaker.state.value,
+            error_detail=str(cb_err),
         )
 
         return CallProcessResponse(
@@ -158,6 +182,17 @@ async def process_call_event(request: CallProcessRequest):
             raw_payload=request.model_dump(mode="json"),
         )
 
+        # Record in persistent compliance audit log
+        dlq_handler.record_call_audit(
+            event=event,
+            status="degraded_dlq",
+            outcome=CallOutcome.FAILED_DOWNSTREAM.value,
+            retries=rx_err.attempts,
+            latency_ms=round(total_latency, 2),
+            cb_state=circuit_breaker.state.value,
+            error_detail=str(rx_err),
+        )
+
         return CallProcessResponse(
             event_id=event.event_id,
             status="degraded_dlq",
@@ -167,6 +202,24 @@ async def process_call_event(request: CallProcessRequest):
             total_latency_ms=round(total_latency, 2),
             error_reason=str(rx_err),
         )
+
+
+# =====================================================================
+# Call History / Audit Log Inspection
+# =====================================================================
+@app.get("/calls", tags=["Calls"])
+async def list_call_audit_logs(
+    limit: int = Query(50, ge=1, le=500),
+    offset: int = Query(0, ge=0),
+):
+    """Inspect all historical processed call events across all sessions from SQLite."""
+    return dlq_handler.list_audit_logs(limit=limit, offset=offset)
+
+
+@app.get("/calls/summary", tags=["Calls"])
+async def get_call_history_summary():
+    """Retrieve aggregate historical counts (total, successful, degraded, average latency)."""
+    return dlq_handler.get_audit_summary()
 
 
 # =====================================================================
