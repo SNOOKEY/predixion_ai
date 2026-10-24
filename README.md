@@ -25,6 +25,20 @@ This submission solves this end-to-end across **Task 1** and **Task 2**:
 
 ---
 
+## 📋 Deliverables Checklist & Index
+
+| Task | Required Deliverable | Repository Location | Notes |
+| :--- | :--- | :--- | :--- |
+| **Task 1** | **Git Repo: Code + README** | [`inference_service/`](inference_service/) & [`README.md`](README.md) | Full resilience layer, 12 passing tests, and execution guide |
+| **Task 1** | **Half-Page Cost Writeup** | [`cost_estimate.md`](cost_estimate.md) | Rigorous analysis of Config A vs Config B in `ap-south-1` |
+| **Task 1** | **One Paragraph: Swapping Mock for Open-Weight Model** | [Section Below](#one-paragraph-how-to-swap-the-mock-for-a-real-open-weight-model) | Decoupled via `BasePipelineClient` (faster-whisper + vLLM + Piper) |
+| **Task 2** | **Full Repo: IaC + App + README** | [`terraform/`](terraform/) & [`README.md`](README.md) | Production Multi-AZ Fargate IaC in `ap-south-1` behind ALB |
+| **Task 2** | **Runbook** | [`docs/runbook.md`](docs/runbook.md) | P1/P2 Incident response triage, diagnostics, and recovery |
+| **Task 2** | **Seniority Architecture Blueprint** | [`docs/seniority_architecture.md`](docs/seniority_architecture.md) | Multi-AZ failure simulation, Blue/Green rollback, & RBI compliance |
+| **Task 2** | **Video Walkthrough** | *(To be attached in submission portal)* | Walkthrough of live load ramp, SQS DLQ, and clean teardown |
+
+---
+
 ## ⚡ Quick Evaluation: Test in Under 60 Seconds
 
 You can evaluate the system right now either against the live AWS deployment or locally via Docker.
@@ -135,10 +149,12 @@ Replays realistic BFSI campaign traffic curves:
 
 ## How to Switch to a Real Open-Weight LLM
 
-The assignment asks how the mock dependency can be swapped for a real open-weight model stack. 
+### One Paragraph: How to Swap the Mock for a Real Open-Weight Model
 
-I decoupled the resilience layer using an abstract interface [`BasePipelineClient`](file:///C:/Users/anazs/projects/predixion_ai/inference_service/pipeline_client.py):
+> **Prompt Requirement**: *One paragraph on how you’d swap the mock for a real open-weight model.*  
+> To swap the mocked dependency for a real open-weight model stack without touching any resilience logic, we implement the abstract `BasePipelineClient` interface defined in [`inference_service/pipeline_client.py`](inference_service/pipeline_client.py): incoming borrower voice streams to `faster-whisper` (`large-v3-turbo` with CTranslate2 for sub-200ms GPU transcription), the transcribed text is dispatched asynchronously to a local `vLLM` high-throughput inference engine serving an AWQ-quantized `Llama-3.1-8B-Instruct` or `Mistral-7B-Instruct` model to generate context-aware collections negotiation responses, and the output text is synthesized to natural speech via `Piper TTS` in under 50ms. Because `ResilientPipelineClient` acts as a pure decorator over `BasePipelineClient`, the exponential jitter retries, three-state circuit breaker, and AWS SQS dead-letter capture continue to protect the system identically with zero code modifications when pointing to real GPU hardware.
 
+### Implementation Pattern:
 ```python
 class BasePipelineClient(ABC):
     @abstractmethod
