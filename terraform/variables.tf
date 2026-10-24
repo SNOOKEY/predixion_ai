@@ -42,8 +42,8 @@ variable "fargate_memory" {
 
 variable "min_tasks" {
   type        = number
-  description = "Minimum running task count (baseline = 1 task)"
-  default     = 1
+  description = "Minimum running task count (baseline = 2 tasks for Seniority Multi-AZ HA across 1a & 1b)"
+  default     = 2
 }
 
 variable "max_tasks" {

@@ -19,7 +19,7 @@ resource "aws_appautoscaling_policy" "target_tracking_requests" {
   target_tracking_scaling_policy_configuration {
     predefined_metric_specification {
       predefined_metric_type = "ALBRequestCountPerTarget"
-      resource_label         = "${aws_lb.main.arn_suffix}/${aws_lb_target_group.app.arn_suffix}"
+      resource_label         = "${aws_lb.main.arn_suffix}/${aws_lb_target_group.blue.arn_suffix}"
     }
 
     target_value       = 30.0 # Scale out when a single task exceeds 30 req/min

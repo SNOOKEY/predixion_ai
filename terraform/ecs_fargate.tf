@@ -92,6 +92,10 @@ resource "aws_ecs_service" "app" {
   desired_count   = var.min_tasks
   launch_type     = "FARGATE"
 
+  deployment_controller {
+    type = "CODE_DEPLOY"
+  }
+
   network_configuration {
     security_groups  = [aws_security_group.ecs_tasks.id]
     subnets          = aws_subnet.private[*].id
@@ -99,13 +103,17 @@ resource "aws_ecs_service" "app" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.app.arn
+    target_group_arn = aws_lb_target_group.blue.arn
     container_name   = "inference-service"
     container_port   = var.app_port
   }
 
   lifecycle {
-    ignore_changes = [desired_count]
+    ignore_changes = [
+      task_definition,
+      load_balancer,
+      desired_count
+    ]
   }
 
   depends_on = [aws_lb_listener.http]

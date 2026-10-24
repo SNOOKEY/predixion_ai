@@ -34,8 +34,9 @@ predixion_ai/
 │
 ├── terraform/                  # [Round 2] Production IaC for ap-south-1 (Mumbai)
 │   ├── vpc.tf                  # Multi-AZ VPC, private subnets, NAT Gateway
-│   ├── alb.tf                  # Application Load Balancer & Target Group
-│   ├── ecs_fargate.tf          # ECS Fargate Service & Task Definition
+│   ├── alb.tf                  # ALB with Blue/Green Target Groups & Port 8080 test listener
+│   ├── codedeploy.tf           # Seniority: Blue/Green deployment with automated rollback
+│   ├── ecs_fargate.tf          # ECS Fargate Service (Multi-AZ baseline across 1a & 1b)
 │   ├── autoscaling.tf          # Custom-metric / request-count Target Tracking Autoscaling
 │   ├── iam.tf                  # Appendix F non-wildcard least-privilege IAM task roles
 │   ├── cloudwatch.tf           # Observability Dashboard (latency, 5xx, tasks, DLQ)
@@ -44,6 +45,7 @@ predixion_ai/
 │   └── terraform.tfvars.example
 │
 ├── docs/                       # Operational & architectural runbooks
+│   ├── seniority_architecture.md # Seniority: Multi-AZ simulation, Blue/Green rollback, RBI compliance
 │   ├── runbook.md              # Appendix I incident response runbook
 │   └── round2_guide.md         # Step-by-step deploy, demo load, & teardown guide
 │
