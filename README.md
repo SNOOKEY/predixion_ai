@@ -1,4 +1,5 @@
-# Predixion AI x TalentX — Open-Weight Collections Agent (Round 1: Local Track)
+# Predixion AI x TalentX — Open-Weight Collections Agent Challenge
+### AWS Forward Deployment Engineer Track (Round 1 & Round 2)
 
 [![CI Pipeline](https://github.com/SNOOKEY/predixion_ai/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SNOOKEY/predixion_ai/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
@@ -6,8 +7,51 @@
 [![Security: Bandit](https://img.shields.io/badge/security-bandit-black.svg)](https://github.com/PyCQA/bandit)
 [![Vulnerability Scan: Trivy](https://img.shields.io/badge/vulnerability%20scan-trivy-1904DA.svg)](https://github.com/aquasecurity/trivy)
 [![Docker Ready](https://img.shields.io/badge/docker-ready-2496ED.svg?logo=docker&logoColor=white)](Dockerfile)
+[![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC.svg?logo=terraform&logoColor=white)](terraform/)
 
-A resilient, compliant voice-agent inference service for BFSI collections portfolios (credit card, BNPL, personal loans). Built to withstand real-world downstream model degradation and transient outages without dropping call events or breaching compliance mandates.
+A resilient, compliant voice-agent inference service for BFSI collections portfolios (credit card, BNPL, personal loans). Built to withstand downstream model degradation and transient outages without dropping call events or breaching compliance mandates.
+
+---
+
+## Repository Structure
+
+This repository is unified across both challenge tracks: the core inference service and resilience layer ([Round 1](file:///C:/Users/anazs/projects/predixion_ai/inference_service)) are directly deployed onto AWS Fargate and GPU infrastructure via Terraform ([Round 2](file:///C:/Users/anazs/projects/predixion_ai/terraform/)).
+
+```text
+predixion_ai/
+│
+├── .github/workflows/          # Automated CI pipeline (lint, tests, SAST, Trivy, SonarQube)
+│
+├── inference_service/          # [Round 1 & 2] Core resilient collections agent
+│   ├── main.py                 # FastAPI service with DLQ & Circuit Breaker inspection
+│   ├── pipeline_client.py      # Resilient client + abstract BasePipelineClient interface
+│   ├── circuit_breaker.py      # CLOSED / OPEN / HALF_OPEN state machine
+│   └── dlq.py                  # Persistent SQLite Dead-Letter Queue (zero dropped calls)
+│
+├── mock_dependency/            # [Round 1] Appendix B 20% failure, lognormal latency mock
+├── traffic_generator/          # [Round 1 & 2] Appendix C synthetic campaign replayer
+├── tests/                      # Unit & integration test suite (resilience, DLQ, breaker)
+│
+├── terraform/                  # [Round 2] Production IaC for ap-south-1 (Mumbai)
+│   ├── vpc.tf                  # Multi-AZ VPC, private subnets, NAT Gateway
+│   ├── alb.tf                  # Application Load Balancer & Target Group
+│   ├── ecs_fargate.tf          # ECS Fargate Service & Task Definition
+│   ├── autoscaling.tf          # Custom-metric / request-count Target Tracking Autoscaling
+│   ├── iam.tf                  # Appendix F non-wildcard least-privilege IAM task roles
+│   ├── cloudwatch.tf           # Observability Dashboard (latency, 5xx, tasks, DLQ)
+│   ├── sqs.tf                  # AWS SQS collections-dlq for cloud dead-letter storage
+│   ├── gpu_worker.tf           # EC2 g5.xlarge launch config for open-weight model stack
+│   └── terraform.tfvars.example
+│
+├── docs/                       # Operational & architectural runbooks
+│   ├── runbook.md              # Appendix I incident response runbook
+│   └── round2_guide.md         # Step-by-step deploy, demo load, & teardown guide
+│
+├── cost_estimate.md            # Half-page AWS Fargate cost analysis (Config A vs Config B)
+├── docker-compose.yml          # One-command local development & evaluation harness
+├── Dockerfile                  # Production container definition
+└── README.md
+```
 
 ---
 

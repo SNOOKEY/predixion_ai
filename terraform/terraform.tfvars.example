@@ -1,0 +1,18 @@
+# AWS Region Configuration (Must be ap-south-1 for Mumbai latency & Indian data residency)
+aws_region  = "ap-south-1"
+environment = "production"
+
+# Task Resource Sizing (Config A: 1 vCPU / 2GB vs Config B: 0.5 vCPU / 1GB)
+fargate_cpu    = 1024
+fargate_memory = 2048
+
+# Scaling boundaries (1 task baseline -> 5 tasks campaign peak)
+min_tasks = 1
+max_tasks = 5
+
+# App Container Image (Built & pushed to Amazon ECR)
+app_image = "<YOUR_AWS_ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/predixion-inference-service:1.0"
+app_port  = 8000
+
+# Set to true during live Round 2 evaluation when GPU quota is granted
+enable_gpu_worker = false
