@@ -1,8 +1,10 @@
-# Runbook: Collections Voice-Agent Inference Service
+# Appendix I: Operational Incident Runbook
+### Collections Voice-Agent Inference Service (AWS Fargate — ap-south-1)
 
-> **Severity**: P1 / P2 Incident Response  
-> **Service**: `collections-inference-service` (ECS Fargate, `ap-south-1`)  
-> **Compliance Context**: BFSI collections calls must be logged and retried; silent drops constitute a regulatory compliance failure.
+> **Specification**: Fulfills the Appendix I Operational Runbook requirement.  
+> **Severity Levels**: P1 (Campaign Down / Silent Drop Risk) / P2 (Degraded Latency / Partial Outage)  
+> **Service**: `collections-inference-service` (ECS Fargate behind ALB, `ap-south-1`)  
+> **Regulatory Context**: BFSI collections calls must be logged and retried; silent drops constitute a non-negotiable RBI compliance breach.
 
 ---
 
@@ -92,14 +94,12 @@
 ## 5. Post-Incident & Recovery Procedures
 
 1. **Replay DLQ**:
-   - Once downstream pipeline recovers and circuit breaker resets to `CLOSED`, initiate DLQ replay:
+   - Once the downstream pipeline recovers and the circuit breaker returns to `CLOSED`, initiate DLQ replay:
      ```bash
-     # Local SQLite DLQ Replay:
-     curl -X POST http://<SERVICE_URL>/dlq/replay
-
-     # Or trigger batch replay consumer for SQS DLQ
-     python -m inference_service.dlq.replay_sqs --batch-size 50
+     # Trigger automated replay across SQS DLQ (or local SQLite) via the service endpoint:
+     curl -X POST http://<ALB_OR_SERVICE_URL>/dlq/replay
      ```
+   - Monitor the replayed message count in the response payload and verify `sqs_messages_visible` returns to `0`.
 2. **Compliance Verification**:
    - Validate that 100% of failed call events in the campaign window have either been successfully re-processed or marked with terminal regulatory outcomes (`dispute`, `no_answer`, `ptp_taken`).
 3. **Telemetry & Calibration**:
