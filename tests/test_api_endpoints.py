@@ -10,11 +10,10 @@ from inference_service.pipeline_client import PipelineResult, RetriesExhaustedEr
 
 
 class TestAPIEndpoints(unittest.TestCase):
-
     def setUp(self):
         self.tmp_dir = tempfile.TemporaryDirectory()
         self.test_db_path = os.path.join(self.tmp_dir.name, "test_dlq.db")
-        
+
         # Point DLQHandler to a temporary isolated DB for tests
         self.original_db_path = dlq_handler.db_path
         dlq_handler.db_path = self.test_db_path
@@ -63,7 +62,9 @@ class TestAPIEndpoints(unittest.TestCase):
             retries_performed=0,
         )
 
-        with patch.object(resilient_client, "process_call", new=AsyncMock(return_value=mock_result)):
+        with patch.object(
+            resilient_client, "process_call", new=AsyncMock(return_value=mock_result)
+        ):
             resp = self.client.post("/calls/process", json=sample_event)
             self.assertEqual(resp.status_code, 200)
             data = resp.json()
@@ -91,7 +92,9 @@ class TestAPIEndpoints(unittest.TestCase):
             last_error=Exception("503 Service Unavailable"),
         )
 
-        with patch.object(resilient_client, "process_call", new=AsyncMock(side_effect=exhausted_err)):
+        with patch.object(
+            resilient_client, "process_call", new=AsyncMock(side_effect=exhausted_err)
+        ):
             resp = self.client.post("/calls/process", json=sample_event)
             self.assertEqual(resp.status_code, 200)
             data = resp.json()

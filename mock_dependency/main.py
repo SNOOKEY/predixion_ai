@@ -16,7 +16,9 @@ app = FastAPI(
 
 class PipelineProcessRequest(BaseModel):
     event_id: str = Field(..., description="Unique UUID of the call event")
-    audio_ref: str = Field(default="synthetic", description="Reference to audio input payload")
+    audio_ref: str = Field(
+        default="synthetic", description="Reference to audio input payload"
+    )
 
 
 class PipelineSuccessResponse(BaseModel):

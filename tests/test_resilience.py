@@ -25,17 +25,20 @@ from inference_service.schemas import (
 
 class MockFlakyClient(BasePipelineClient):
     """Simulates a downstream client with controllable failure counts."""
+
     def __init__(self, fail_first_n_times: int = 0):
         self.fail_first_n_times = fail_first_n_times
         self.call_count = 0
 
-    async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
+    async def process_call(
+        self, event_id: str, audio_ref: str = "synthetic"
+    ) -> PipelineResult:
         self.call_count += 1
         if self.call_count <= self.fail_first_n_times:
             raise DownstreamServiceError(
                 message="Injected downstream 503 failure",
                 status_code=503,
-                reason="downstream_timeout"
+                reason="downstream_timeout",
             )
         return PipelineResult(
             status="ok",
@@ -46,7 +49,6 @@ class MockFlakyClient(BasePipelineClient):
 
 
 class TestResilienceLayer(unittest.IsolatedAsyncioTestCase):
-
     async def test_retry_success_after_transient_failures(self):
         """Verify that transient 503 errors trigger retries with backoff and succeed."""
         flaky = MockFlakyClient(fail_first_n_times=2)
@@ -106,11 +108,15 @@ class TestResilienceLayer(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(CircuitBreakerOpenError):
             await resilient.process_call("evt-fast-fail")
 
-        self.assertEqual(flaky.call_count, initial_flaky_calls)  # No network call wasted!
+        self.assertEqual(
+            flaky.call_count, initial_flaky_calls
+        )  # No network call wasted!
 
     async def test_circuit_breaker_recovery_to_closed(self):
         """Verify transition from OPEN -> HALF_OPEN -> CLOSED upon cooldown and trial success."""
-        cb = CircuitBreaker(failure_threshold=2, recovery_timeout=0.1, half_open_success_threshold=2)
+        cb = CircuitBreaker(
+            failure_threshold=2, recovery_timeout=0.1, half_open_success_threshold=2
+        )
 
         await cb.record_failure()
         await cb.record_failure()

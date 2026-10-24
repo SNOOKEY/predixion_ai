@@ -22,19 +22,38 @@ from inference_service.schemas import (
 logger = logging.getLogger("inference_service.dlq_handler")
 
 DEFAULT_DB_PATH = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "dead_letters.db"
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "dead_letters.db",
 )
 
 
 class DLQHandler:
     """
-    Persistent Dead-Letter Queue & Call Compliance Audit Store backed by SQLite.
+    Persistent Dead-Letter Queue & Call Compliance Audit Store.
+    Supports AWS SQS (when SQS_DLQ_URL is configured) with local SQLite fallback/audit logging.
     Guarantees zero dropped or unlogged calls in collections operations.
     """
-    def __init__(self, db_path: str | None = None):
+
+    def __init__(self, db_path: str | None = None, sqs_queue_url: str | None = None):
         self.db_path = db_path or os.getenv("DLQ_DB_PATH", DEFAULT_DB_PATH)
+        self.sqs_queue_url = sqs_queue_url or os.getenv("SQS_DLQ_URL")
+        self.aws_region = os.getenv("AWS_REGION", "ap-south-1")
+        self._sqs_client = None
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self._init_db()
+
+    def _get_sqs_client(self):
+        """Lazy-initializes thread-safe boto3 SQS client."""
+        if self._sqs_client is None:
+            try:
+                import boto3
+
+                self._sqs_client = boto3.client("sqs", region_name=self.aws_region)
+            except Exception as e:  # noqa: BLE001
+                logger.warning(f"Could not initialize boto3 SQS client: {e}")
+                return None
+        return self._sqs_client
 
     @contextmanager
     def _connection(self) -> Generator[sqlite3.Connection, None, None]:
@@ -128,8 +147,12 @@ class DLQHandler:
                 (
                     event.event_id,
                     event.campaign_id,
-                    event.borrower_bucket.value if hasattr(event.borrower_bucket, "value") else str(event.borrower_bucket),
-                    event.product_type.value if hasattr(event.product_type, "value") else str(event.product_type),
+                    event.borrower_bucket.value
+                    if hasattr(event.borrower_bucket, "value")
+                    else str(event.borrower_bucket),
+                    event.product_type.value
+                    if hasattr(event.product_type, "value")
+                    else str(event.product_type),
                     status,
                     outcome,
                     retries,
@@ -150,11 +173,66 @@ class DLQHandler:
     ) -> DLQRecord:
         """
         Persists a dropped or failed call event into the inspectable DLQ store.
+        If SQS_DLQ_URL is configured, delivers to AWS SQS.
         """
         now_iso = datetime.now(UTC).isoformat()
         payload_dict = raw_payload or event.model_dump(mode="json")
         payload_json = json.dumps(payload_dict)
 
+        # 1. Deliver to AWS SQS (Cloud Track)
+        if self.sqs_queue_url:
+            sqs = self._get_sqs_client()
+            if sqs:
+                try:
+                    msg_body = json.dumps(
+                        {
+                            "event_id": event.event_id,
+                            "campaign_id": event.campaign_id,
+                            "borrower_bucket": event.borrower_bucket.value
+                            if hasattr(event.borrower_bucket, "value")
+                            else str(event.borrower_bucket),
+                            "product_type": event.product_type.value
+                            if hasattr(event.product_type, "value")
+                            else str(event.product_type),
+                            "timestamp": event.timestamp.isoformat()
+                            if hasattr(event.timestamp, "isoformat")
+                            else str(event.timestamp),
+                            "call_duration_s": event.call_duration_s,
+                            "outcome": CallOutcome.FAILED_DOWNSTREAM.value,
+                            "retry_count": retries_attempted,
+                            "failure_reason": failure_reason,
+                            "created_at": now_iso,
+                            "status": "PENDING",
+                            "payload": payload_dict,
+                        }
+                    )
+                    resp = sqs.send_message(
+                        QueueUrl=self.sqs_queue_url,
+                        MessageBody=msg_body,
+                        MessageAttributes={
+                            "event_id": {
+                                "DataType": "String",
+                                "StringValue": event.event_id,
+                            },
+                            "failure_reason": {
+                                "DataType": "String",
+                                "StringValue": failure_reason,
+                            },
+                            "campaign_id": {
+                                "DataType": "String",
+                                "StringValue": event.campaign_id,
+                            },
+                        },
+                    )
+                    logger.info(
+                        f"Delivered dead-letter event {event.event_id} to AWS SQS ({self.sqs_queue_url}). MessageId: {resp.get('MessageId')}"
+                    )
+                except Exception:
+                    logger.exception(
+                        f"Failed to publish dead-letter {event.event_id} to AWS SQS"
+                    )
+
+        # 2. Local SQLite Persistence (Compliance audit & inspectability)
         with self._connection() as conn:
             conn.execute(
                 """
@@ -172,9 +250,15 @@ class DLQHandler:
                 (
                     event.event_id,
                     event.campaign_id,
-                    event.borrower_bucket.value if hasattr(event.borrower_bucket, "value") else str(event.borrower_bucket),
-                    event.product_type.value if hasattr(event.product_type, "value") else str(event.product_type),
-                    event.timestamp.isoformat() if hasattr(event.timestamp, "isoformat") else str(event.timestamp),
+                    event.borrower_bucket.value
+                    if hasattr(event.borrower_bucket, "value")
+                    else str(event.borrower_bucket),
+                    event.product_type.value
+                    if hasattr(event.product_type, "value")
+                    else str(event.product_type),
+                    event.timestamp.isoformat()
+                    if hasattr(event.timestamp, "isoformat")
+                    else str(event.timestamp),
                     event.call_duration_s,
                     CallOutcome.FAILED_DOWNSTREAM.value,
                     retries_attempted,
@@ -191,7 +275,9 @@ class DLQHandler:
 
         record = self.get_record(event.event_id)
         if record is None:
-            raise RuntimeError(f"Failed to retrieve newly inserted DLQ record {event.event_id}")
+            raise RuntimeError(
+                f"Failed to retrieve newly inserted DLQ record {event.event_id}"
+            )
         return record
 
     def get_record(self, event_id: str) -> DLQRecord | None:
@@ -245,9 +331,15 @@ class DLQHandler:
         """Get aggregate counts across all historical calls in the database."""
         with self._connection() as conn:
             total = conn.execute("SELECT COUNT(*) FROM call_audit_log").fetchone()[0]
-            success = conn.execute("SELECT COUNT(*) FROM call_audit_log WHERE status = 'success'").fetchone()[0]
-            degraded = conn.execute("SELECT COUNT(*) FROM call_audit_log WHERE status = 'degraded_dlq'").fetchone()[0]
-            avg_lat = conn.execute("SELECT COALESCE(AVG(latency_ms), 0.0) FROM call_audit_log").fetchone()[0]
+            success = conn.execute(
+                "SELECT COUNT(*) FROM call_audit_log WHERE status = 'success'"
+            ).fetchone()[0]
+            degraded = conn.execute(
+                "SELECT COUNT(*) FROM call_audit_log WHERE status = 'degraded_dlq'"
+            ).fetchone()[0]
+            avg_lat = conn.execute(
+                "SELECT COALESCE(AVG(latency_ms), 0.0) FROM call_audit_log"
+            ).fetchone()[0]
             return {
                 "total_historical_calls": total,
                 "successful_calls": success,
@@ -256,7 +348,24 @@ class DLQHandler:
             }
 
     def get_stats(self) -> DLQStats:
-        """Inspect high-level metrics of dead letter queue."""
+        """Inspect high-level metrics of dead letter queue (both SQLite and SQS)."""
+        sqs_visible = None
+        if self.sqs_queue_url:
+            sqs = self._get_sqs_client()
+            if sqs:
+                try:
+                    attrs = sqs.get_queue_attributes(
+                        QueueUrl=self.sqs_queue_url,
+                        AttributeNames=["ApproximateNumberOfMessages"],
+                    )
+                    sqs_visible = int(
+                        attrs.get("Attributes", {}).get(
+                            "ApproximateNumberOfMessages", 0
+                        )
+                    )
+                except Exception as exc:  # noqa: BLE001
+                    logger.warning(f"Could not fetch SQS queue attributes: {exc}")
+
         with self._connection() as conn:
             total = conn.execute("SELECT COUNT(*) FROM dead_letters").fetchone()[0]
             pending = conn.execute(
@@ -276,11 +385,61 @@ class DLQHandler:
 
         return DLQStats(
             total_records=total,
-            pending_records=pending,
+            pending_records=sqs_visible if sqs_visible is not None else pending,
             replayed_records=replayed,
             discarded_records=discarded,
             failure_breakdown=breakdown,
+            sqs_queue_url=self.sqs_queue_url,
+            sqs_messages_visible=sqs_visible,
         )
+
+    def receive_sqs_messages(
+        self, max_messages: int = 10, wait_time_seconds: int = 2
+    ) -> list[dict]:
+        """Polls messages from SQS DLQ for inspection or replay."""
+        if not self.sqs_queue_url:
+            return []
+        sqs = self._get_sqs_client()
+        if not sqs:
+            return []
+        try:
+            resp = sqs.receive_message(
+                QueueUrl=self.sqs_queue_url,
+                MaxNumberOfMessages=min(max_messages, 10),
+                WaitTimeSeconds=wait_time_seconds,
+                MessageAttributeNames=["All"],
+            )
+            messages = resp.get("Messages", [])
+            results = []
+            for m in messages:
+                results.append(
+                    {
+                        "receipt_handle": m["ReceiptHandle"],
+                        "body": json.loads(m["Body"])
+                        if isinstance(m["Body"], str)
+                        else m["Body"],
+                    }
+                )
+            return results
+        except Exception as exc:  # noqa: BLE001
+            logger.error(f"Error receiving from SQS: {exc}")
+            return []
+
+    def delete_sqs_message(self, receipt_handle: str) -> bool:
+        """Deletes a replayed message from SQS."""
+        if not self.sqs_queue_url:
+            return False
+        sqs = self._get_sqs_client()
+        if not sqs:
+            return False
+        try:
+            sqs.delete_message(
+                QueueUrl=self.sqs_queue_url, ReceiptHandle=receipt_handle
+            )
+            return True
+        except Exception as exc:  # noqa: BLE001
+            logger.error(f"Error deleting SQS message: {exc}")
+            return False
 
     def mark_replayed(
         self,
@@ -365,8 +524,14 @@ def print_cli_inspection():
         print(f"{'Event ID':<38} | {'Status':<9} | {'Retries':<7} | {'Reason'}")
         print("-" * 80)
         for r in dlq_records:
-            reason = (r.failure_reason[:30] + '..') if len(r.failure_reason) > 30 else r.failure_reason
-            print(f"{r.event_id:<38} | {r.status.value:<9} | {r.retry_count:<7} | {reason}")
+            reason = (
+                (r.failure_reason[:30] + "..")
+                if len(r.failure_reason) > 30
+                else r.failure_reason
+            )
+            print(
+                f"{r.event_id:<38} | {r.status.value:<9} | {r.retry_count:<7} | {reason}"
+            )
     else:
         print("No dead letters currently in queue.")
     print("=" * 80 + "\n")

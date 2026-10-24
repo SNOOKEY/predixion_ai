@@ -13,9 +13,9 @@ logger = logging.getLogger("inference_service.pipeline_client")
 
 
 class CircuitBreakerState(str, Enum):
-    CLOSED = "CLOSED"          # Normal operation; downstream receiving requests
-    OPEN = "OPEN"              # Downstream failing; fast-failing incoming requests
-    HALF_OPEN = "HALF_OPEN"    # Probing downstream with limited trial requests
+    CLOSED = "CLOSED"  # Normal operation; downstream receiving requests
+    OPEN = "OPEN"  # Downstream failing; fast-failing incoming requests
+    HALF_OPEN = "HALF_OPEN"  # Probing downstream with limited trial requests
 
 
 class PipelineException(Exception):
@@ -24,7 +24,10 @@ class PipelineException(Exception):
 
 class DownstreamServiceError(PipelineException):
     """Raised when downstream explicitly returns 5xx or transient failure."""
-    def __init__(self, message: str, status_code: int = 503, reason: str = "downstream_timeout"):
+
+    def __init__(
+        self, message: str, status_code: int = 503, reason: str = "downstream_timeout"
+    ):
         super().__init__(message)
         self.status_code = status_code
         self.reason = reason
@@ -36,6 +39,7 @@ class CircuitBreakerOpenError(PipelineException):
 
 class RetriesExhaustedError(PipelineException):
     """Raised when all retry attempts fail."""
+
     def __init__(self, message: str, attempts: int, last_error: Exception):
         super().__init__(message)
         self.attempts = attempts
@@ -60,6 +64,7 @@ class CircuitBreaker:
     - HALF_OPEN: Allows trial requests. If half_open_success_threshold successes occur, resets to CLOSED.
       Any failure in HALF_OPEN immediately trips back to OPEN.
     """
+
     def __init__(
         self,
         failure_threshold: int = 5,
@@ -87,7 +92,9 @@ class CircuitBreaker:
             self._state = CircuitBreakerState.HALF_OPEN
             self._consecutive_successes = 0
             self._last_state_change = time.time()
-            logger.info("Circuit Breaker transitioned to HALF_OPEN (probing downstream)")
+            logger.info(
+                "Circuit Breaker transitioned to HALF_OPEN (probing downstream)"
+            )
         return self._state
 
     async def can_execute(self) -> bool:
@@ -104,7 +111,9 @@ class CircuitBreaker:
                     self._consecutive_failures = 0
                     self._consecutive_successes = 0
                     self._last_state_change = time.time()
-                    logger.info("Circuit Breaker transitioned back to CLOSED (recovered)")
+                    logger.info(
+                        "Circuit Breaker transitioned back to CLOSED (recovered)"
+                    )
             elif current_state == CircuitBreakerState.CLOSED:
                 self._consecutive_failures = 0
 
@@ -112,7 +121,10 @@ class CircuitBreaker:
         async with self._lock:
             current_state = self.state
             self._consecutive_failures += 1
-            if current_state == CircuitBreakerState.HALF_OPEN or self._consecutive_failures >= self.failure_threshold:
+            if (
+                current_state == CircuitBreakerState.HALF_OPEN
+                or self._consecutive_failures >= self.failure_threshold
+            ):
                 self._state = CircuitBreakerState.OPEN
                 self._last_state_change = time.time()
                 self._trips_count += 1
@@ -129,7 +141,9 @@ class CircuitBreaker:
             "total_trips": self._trips_count,
             "recovery_timeout_s": self.recovery_timeout,
             "failure_threshold": self.failure_threshold,
-            "seconds_since_state_change": round(time.time() - self._last_state_change, 2),
+            "seconds_since_state_change": round(
+                time.time() - self._last_state_change, 2
+            ),
         }
 
     async def reset(self):
@@ -149,8 +163,11 @@ class BasePipelineClient(ABC):
     Any concrete implementation (mock HTTP, Whisper + Llama + Piper, etc.)
     plugs into the resilience layer seamlessly.
     """
+
     @abstractmethod
-    async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
+    async def process_call(
+        self, event_id: str, audio_ref: str = "synthetic"
+    ) -> PipelineResult:
         """Process STT -> LLM -> TTS inference for given call event."""
 
 
@@ -159,20 +176,25 @@ class HttpMockPipelineClient(BasePipelineClient):
     Concrete client calling the mock HTTP service specified in Appendix B.
     Maintains a persistent connection pool for low latency and high-throughput resilience.
     """
+
     def __init__(
         self,
         base_url: str | None = None,
         timeout_s: float = 5.0,
         client: httpx.AsyncClient | None = None,
     ):
-        self.base_url = (base_url or os.getenv("MOCK_PIPELINE_URL", "http://localhost:8001")).rstrip("/")
+        self.base_url = (
+            base_url or os.getenv("MOCK_PIPELINE_URL", "http://localhost:8001")
+        ).rstrip("/")
         self.timeout_s = timeout_s
         self._external_client = client is not None
         self._client = client
 
     def _get_client(self) -> httpx.AsyncClient:
         if self._client is None or self._client.is_closed:
-            limits = httpx.Limits(max_keepalive_connections=50, max_connections=200, keepalive_expiry=30.0)
+            limits = httpx.Limits(
+                max_keepalive_connections=50, max_connections=200, keepalive_expiry=30.0
+            )
             self._client = httpx.AsyncClient(
                 timeout=httpx.Timeout(self.timeout_s),
                 limits=limits,
@@ -185,7 +207,9 @@ class HttpMockPipelineClient(BasePipelineClient):
         if self._client and not self._client.is_closed and not self._external_client:
             await self._client.aclose()
 
-    async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
+    async def process_call(
+        self, event_id: str, audio_ref: str = "synthetic"
+    ) -> PipelineResult:
         endpoint = f"{self.base_url}/pipeline/process"
         payload = {"event_id": event_id, "audio_ref": audio_ref}
         client = self._get_client()
@@ -196,7 +220,7 @@ class HttpMockPipelineClient(BasePipelineClient):
             raise DownstreamServiceError(
                 message=f"Connection failure to downstream: {exc}",
                 status_code=503,
-                reason="connection_error"
+                reason="connection_error",
             ) from exc
 
         if response.status_code == 200:
@@ -209,7 +233,11 @@ class HttpMockPipelineClient(BasePipelineClient):
             )
 
         if response.status_code == 503:
-            err_data = response.json() if "application/json" in response.headers.get("content-type", "") else {}
+            err_data = (
+                response.json()
+                if "application/json" in response.headers.get("content-type", "")
+                else {}
+            )
             reason = err_data.get("reason", "downstream_timeout")
             raise DownstreamServiceError(
                 message=f"Downstream service returned 503: {reason}",
@@ -230,7 +258,10 @@ class OpenWeightPipelineClientStub(BasePipelineClient):
     (faster-whisper, Mistral-7B / Llama-3.1, Piper / XTTS-v2) swap in
     without touching resilience logic.
     """
-    async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
+
+    async def process_call(
+        self, event_id: str, audio_ref: str = "synthetic"
+    ) -> PipelineResult:
         # In production on AWS GPU (g5.xlarge):
         # 1. STT: faster_whisper_model.transcribe(audio_ref) -> transcript
         # 2. LLM: vllm_engine.generate(transcript, prompt_template) -> agent_reply
@@ -249,6 +280,7 @@ class ResilientPipelineClient(BasePipelineClient):
         delay = min(max_delay, base_delay * (backoff_factor ** attempt)) + uniform(0, jitter)
     - Records failures/successes to dynamically adjust circuit breaker state.
     """
+
     def __init__(
         self,
         underlying_client: BasePipelineClient,
@@ -272,7 +304,9 @@ class ResilientPipelineClient(BasePipelineClient):
         if hasattr(self.client, "close") and callable(self.client.close):
             await self.client.close()
 
-    async def process_call(self, event_id: str, audio_ref: str = "synthetic") -> PipelineResult:
+    async def process_call(
+        self, event_id: str, audio_ref: str = "synthetic"
+    ) -> PipelineResult:
         # 1. Circuit breaker gate
         if not await self.cb.can_execute():
             raise CircuitBreakerOpenError(
@@ -299,12 +333,16 @@ class ResilientPipelineClient(BasePipelineClient):
 
                 # Check if circuit tripped during retry cycle
                 if self.cb.state == CircuitBreakerState.OPEN:
-                    logger.warning(f"Circuit breaker tripped open during retries for {event_id}. Fast-exiting.")
+                    logger.warning(
+                        f"Circuit breaker tripped open during retries for {event_id}. Fast-exiting."
+                    )
                     break
 
                 if attempt < self.max_retries:
                     # Exponential backoff with full jitter to avoid stampede
-                    calculated_delay = self.base_delay_s * (self.backoff_factor ** attempt)
+                    calculated_delay = self.base_delay_s * (
+                        self.backoff_factor**attempt
+                    )
                     capped_delay = min(self.max_delay_s, calculated_delay)
                     jittered_delay = capped_delay + random.uniform(0, self.jitter_s)
                     await asyncio.sleep(jittered_delay)

@@ -30,31 +30,44 @@ class CollectionsCallEvent(BaseModel):
     """
     Appendix A: Schema representing a collections call event.
     """
+
     event_id: str = Field(..., description="Unique UUID for the call event")
-    campaign_id: str = Field(..., description="Campaign identifier, e.g., CAMP-2026-09-A")
+    campaign_id: str = Field(
+        ..., description="Campaign identifier, e.g., CAMP-2026-09-A"
+    )
     borrower_bucket: BorrowerBucket = Field(..., description="Days past due bucket")
     product_type: ProductType = Field(..., description="Financial product category")
     timestamp: datetime = Field(
         default_factory=lambda: datetime.now(UTC),
         description="ISO-8601 formatted timestamp of the event",
     )
-    call_duration_s: int = Field(default=0, ge=0, description="Duration of call in seconds")
-    outcome: CallOutcome = Field(default=CallOutcome.CONNECTED, description="Call disposition outcome")
-    retry_count: int = Field(default=0, ge=0, description="Total resilience retries attempted")
+    call_duration_s: int = Field(
+        default=0, ge=0, description="Duration of call in seconds"
+    )
+    outcome: CallOutcome = Field(
+        default=CallOutcome.CONNECTED, description="Call disposition outcome"
+    )
+    retry_count: int = Field(
+        default=0, ge=0, description="Total resilience retries attempted"
+    )
 
 
 class CallProcessRequest(BaseModel):
     """
     Inference service request payload wrapping the call event and audio reference.
     """
+
     event: CollectionsCallEvent
-    audio_ref: str = Field(default="synthetic", description="Audio payload or reference pointer")
+    audio_ref: str = Field(
+        default="synthetic", description="Audio payload or reference pointer"
+    )
 
 
 class CallProcessResponse(BaseModel):
     """
     Response returned by inference service after resilient pipeline processing.
     """
+
     event_id: str
     status: Literal["success", "degraded_dlq"]
     outcome: CallOutcome
@@ -95,6 +108,8 @@ class DLQStats(BaseModel):
     replayed_records: int
     discarded_records: int
     failure_breakdown: dict[str, int]
+    sqs_queue_url: str | None = None
+    sqs_messages_visible: int | None = None
 
 
 class ReplayResult(BaseModel):

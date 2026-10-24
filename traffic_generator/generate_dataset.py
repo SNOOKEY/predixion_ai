@@ -61,7 +61,9 @@ def generate_call_event(event_index: int, total_events: int = 500) -> dict:
     }
 
 
-def generate_dataset(num_records: int = 500, output_path: str = "data/sample_call_events.json"):
+def generate_dataset(
+    num_records: int = 500, output_path: str = "data/sample_call_events.json"
+):
     events = [generate_call_event(i, num_records) for i in range(num_records)]
     # Sort events chronologically by timestamp
     events.sort(key=lambda x: x["timestamp"])
@@ -75,7 +77,9 @@ def generate_dataset(num_records: int = 500, output_path: str = "data/sample_cal
     bucket_counts = {}
     for ev in events:
         outcome_counts[ev["outcome"]] = outcome_counts.get(ev["outcome"], 0) + 1
-        bucket_counts[ev["borrower_bucket"]] = bucket_counts.get(ev["borrower_bucket"], 0) + 1
+        bucket_counts[ev["borrower_bucket"]] = (
+            bucket_counts.get(ev["borrower_bucket"], 0) + 1
+        )
 
     print(f"Generated {len(events)} synthetic call events in '{output_path}'.")
     print(f"Outcome distribution: {outcome_counts}")
@@ -83,6 +87,8 @@ def generate_dataset(num_records: int = 500, output_path: str = "data/sample_cal
 
 
 if __name__ == "__main__":
-    out_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+    out_dir = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"
+    )
     target_file = os.path.join(out_dir, "sample_call_events.json")
     generate_dataset(500, target_file)

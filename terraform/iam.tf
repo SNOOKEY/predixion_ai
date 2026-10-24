@@ -59,7 +59,9 @@ resource "aws_iam_policy" "ecs_task_policy" {
         Action = [
           "sqs:SendMessage",
           "sqs:ReceiveMessage",
-          "sqs:DeleteMessage"
+          "sqs:DeleteMessage",
+          "sqs:GetQueueAttributes",
+          "sqs:GetQueueUrl"
         ]
         Resource = aws_sqs_queue.dlq.arn
       },

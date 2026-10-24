@@ -31,6 +31,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger("inference_service")
 
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     """Lifecycle manager ensuring connection pools are cleanly closed on termination."""
@@ -125,7 +126,9 @@ async def process_call_event(request: CallProcessRequest):
         dlq_handler.record_call_audit(
             event=event,
             status="success",
-            outcome=event.outcome.value if hasattr(event.outcome, "value") else str(event.outcome),
+            outcome=event.outcome.value
+            if hasattr(event.outcome, "value")
+            else str(event.outcome),
             retries=pipeline_res.retries_performed,
             latency_ms=round(total_latency, 2),
             cb_state=circuit_breaker.state.value,
@@ -239,7 +242,9 @@ async def get_call_history_summary():
 # =====================================================================
 @app.get("/dlq", response_model=list[DLQRecord], tags=["DLQ"])
 async def list_dead_letters(
-    status: str | None = Query(None, description="Filter by status: PENDING, REPLAYED, DISCARDED"),
+    status: str | None = Query(
+        None, description="Filter by status: PENDING, REPLAYED, DISCARDED"
+    ),
     campaign_id: str | None = Query(None, description="Filter by campaign ID"),
     limit: int = Query(50, ge=1, le=500),
     offset: int = Query(0, ge=0),
@@ -258,20 +263,64 @@ async def get_dlq_stats():
 
 @app.post("/dlq/replay", response_model=ReplayResult, tags=["DLQ"])
 async def replay_dead_letters(
-    campaign_id: str | None = Query(None, description="Replay pending events for specific campaign"),
+    campaign_id: str | None = Query(
+        None, description="Replay pending events for specific campaign"
+    ),
     limit: int = Query(50, ge=1, le=200),
 ):
     """
     Replays pending dead letter items through the resilient pipeline.
-    If recovered, marks item as REPLAYED in compliance store.
+    Replays from both SQLite audit store and AWS SQS DLQ (if configured).
     """
-    pending_records = dlq_handler.list_records(
-        status="PENDING", campaign_id=campaign_id, limit=limit, offset=0
-    )
-
     successful = 0
     failed = 0
     replayed_details = []
+
+    # 1. Replay from AWS SQS DLQ if configured
+    if dlq_handler.sqs_queue_url:
+        sqs_msgs = dlq_handler.receive_sqs_messages(max_messages=limit)
+        for msg in sqs_msgs:
+            body = msg.get("body", {})
+            event_id = body.get("event_id")
+            receipt_handle = msg.get("receipt_handle")
+            if not event_id or not receipt_handle:
+                continue
+            try:
+                payload = body.get("payload", {})
+                audio_ref = payload.get("audio_ref", "synthetic")
+                res = await resilient_client.process_call(
+                    event_id=event_id, audio_ref=audio_ref
+                )
+                dlq_handler.delete_sqs_message(receipt_handle)
+                dlq_handler.mark_replayed(
+                    event_id=event_id,
+                    success=True,
+                    outcome="connected",
+                )
+                successful += 1
+                replayed_details.append(
+                    {
+                        "event_id": event_id,
+                        "source": "sqs",
+                        "status": "replayed",
+                        "latency_ms": res.latency_ms,
+                    }
+                )
+            except Exception as exc:  # noqa: BLE001
+                failed += 1
+                replayed_details.append(
+                    {
+                        "event_id": event_id,
+                        "source": "sqs",
+                        "status": "failed_again",
+                        "error": str(exc),
+                    }
+                )
+
+    # 2. Replay pending records from SQLite persistence store
+    pending_records = dlq_handler.list_records(
+        status="PENDING", campaign_id=campaign_id, limit=limit, offset=0
+    )
 
     for record in pending_records:
         try:
@@ -286,7 +335,12 @@ async def replay_dead_letters(
             )
             successful += 1
             replayed_details.append(
-                {"event_id": record.event_id, "status": "replayed", "latency_ms": res.latency_ms}
+                {
+                    "event_id": record.event_id,
+                    "source": "sqlite",
+                    "status": "replayed",
+                    "latency_ms": res.latency_ms,
+                }
             )
         except (PipelineException, httpx.RequestError) as exc:
             dlq_handler.mark_replayed(
@@ -296,11 +350,16 @@ async def replay_dead_letters(
             )
             failed += 1
             replayed_details.append(
-                {"event_id": record.event_id, "status": "failed_again", "error": str(exc)}
+                {
+                    "event_id": record.event_id,
+                    "source": "sqlite",
+                    "status": "failed_again",
+                    "error": str(exc),
+                }
             )
 
     return ReplayResult(
-        total_attempted=len(pending_records),
+        total_attempted=len(replayed_details),
         successful_replays=successful,
         failed_replays=failed,
         replayed_events=replayed_details,
