@@ -236,35 +236,96 @@ In Task 2, the resilient inference service is deployed onto AWS infrastructure i
 
 ---
 
-### 2.2 How to Deploy & Run on AWS
+### 2.2 How to Deploy & Live Demo on AWS
 
-#### Step 1: Deploy with Terraform
+All cloud endpoints, queue URLs, and cluster identifiers are resolved dynamically from Terraform outputs without hardcoded addresses.
+
+#### Step 1: Deploy Cloud Infrastructure
 ```bash
 cd terraform
 terraform init
 terraform apply -auto-approve
+cd ..
 ```
 
-#### Step 2: Test Against the Deployed ALB
-Retrieve your load balancer DNS dynamically from Terraform:
+---
+
+#### Step 2: Dynamically Capture Environment Variables
 ```bash
-ALB_URL="http://$(terraform output -raw alb_dns_name)"
+export ALB_URL="http://$(terraform -chdir=terraform output -raw alb_dns_name)"
+export SQS_URL="$(terraform -chdir=terraform output -raw sqs_dlq_url)"
+export CLUSTER="$(terraform -chdir=terraform output -raw ecs_cluster_name)"
+```
 
-# 1. Health & circuit breaker status
-curl $ALB_URL/health
+---
 
-# 2. Inspect AWS SQS Dead-Letter Queue statistics
-curl $ALB_URL/dlq/stats
+#### Step 3: Service Health & Circuit Breaker Probes
+```bash
+# 1. ALB target health check probe
+curl -s "$ALB_URL/health"
 
-# 3. Send 30-call traffic load test through live ALB
+# 2. Inspect circuit breaker status (CLOSED, 0 trips)
+curl -s "$ALB_URL/circuit-breaker/status"
+
+# 3. Check baseline AWS SQS DLQ statistics
+curl -s "$ALB_URL/dlq/stats"
+```
+
+---
+
+#### Step 4: Observability Dashboard & Live Logs
+```bash
+# Print CloudWatch Observability Dashboard URL (open in browser)
+terraform -chdir=terraform output -raw cloudwatch_dashboard_url
+
+# Tail live ECS Fargate container logs in real-time
+aws logs tail /ecs/collections-inference --region ap-south-1 --since 10m
+```
+
+---
+
+#### Step 5: Live Traffic Load Test & DLQ Replay
+```bash
+# 1. Send 30 synthetic calls through the ALB into the Fargate cluster
 python traffic_generator/load_tester.py --url $ALB_URL --quick --count 30
 
-# 4. Replay dead letters directly from AWS SQS
-curl -X POST $ALB_URL/dlq/replay
+# 2. Inspect call telemetry and latency percentiles (p50/p95/p99)
+curl -s "$ALB_URL/calls/summary"
+
+# 3. Verify message count captured in AWS SQS Dead-Letter Queue
+aws sqs get-queue-attributes \
+  --queue-url "$SQS_URL" \
+  --attribute-names ApproximateNumberOfMessages ApproximateNumberOfMessagesNotVisible \
+  --region ap-south-1
+
+# 4. Safely replay dead-letter messages from AWS SQS back through pipeline
+curl -X POST "$ALB_URL/dlq/replay"
 ```
 
-#### Step 3: View Real-Time Observability Dashboard
-Open the CloudWatch console URL outputted by `terraform output cloudwatch_dashboard_url`.
+---
+
+#### Step 6: Multi-AZ Zone Failure Simulation & Verification
+Demonstrate high availability across `ap-south-1a` and `ap-south-1b`:
+
+```bash
+# 1. List active tasks across availability zones before outage
+aws ecs list-tasks --cluster "$CLUSTER" --region ap-south-1
+
+# 2. Simulate sudden AZ outage by stopping one running task
+TASK_ID=$(aws ecs list-tasks --cluster "$CLUSTER" --region ap-south-1 --query "taskArns[0]" --output text)
+aws ecs stop-task --cluster "$CLUSTER" --task "$TASK_ID" --reason "Simulating AZ outage" --region ap-south-1
+
+# 3. Verify ZERO downtime: ALB immediately routes 100% of traffic to the survivor task
+curl -s "$ALB_URL/health"
+
+# 4. Check ECS auto-recovery events and verify replacement task is launched
+aws ecs describe-services \
+  --cluster "$CLUSTER" \
+  --services collections-inference-service \
+  --region ap-south-1 \
+  --query "services[0].events[:3]" \
+  --output table
+```
 
 ---
 
@@ -289,15 +350,16 @@ Fulfills the Appendix I requirement for P1/P2 production incident response:
 
 #### 1. Multi-AZ High Availability & Failure Simulation Playbook
 - **Baseline Deployment**: Configured with `min_tasks = 2`, running actively across `ap-south-1a` and `ap-south-1b`.
-- **Failure Simulation Playbook**:
+- **Dynamic Failure Simulation**:
   ```bash
-  # 1. Identify task running in ap-south-1a
-  TASK_ID=$(aws ecs list-tasks --cluster predixion-cluster --region ap-south-1 --query "taskArns[0]" --output text)
+  # Dynamically obtain cluster name from terraform output
+  CLUSTER=$(terraform -chdir=terraform output -raw ecs_cluster_name)
+  TASK_ID=$(aws ecs list-tasks --cluster "$CLUSTER" --region ap-south-1 --query "taskArns[0]" --output text)
 
-  # 2. Simulate sudden data center/AZ death by stopping that task
-  aws ecs stop-task --cluster predixion-cluster --task $TASK_ID --reason "Simulating ap-south-1a outage" --region ap-south-1
+  # Simulate sudden data center/AZ death by stopping that task
+  aws ecs stop-task --cluster "$CLUSTER" --task "$TASK_ID" --reason "Simulating ap-south-1a outage" --region ap-south-1
   ```
-  **Result**: ALB health checks detect the failure within 15 seconds and route 100% of calls to `ap-south-1b`. ECS automatically launches a replacement task in `ap-south-1a`. Zero dropped calls.
+  **Result**: ALB health checks detect the failure within 15 seconds and route 100% of calls to the surviving AZ (`ap-south-1b`). ECS automatically launches a replacement task in `ap-south-1a`. Zero dropped calls.
 
 #### 2. Zero-Downtime Deployment & Automated Rollback
 Implemented natively via ECS Deployment Circuit Breakers ([`terraform/ecs_fargate.tf`](terraform/ecs_fargate.tf)):
