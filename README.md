@@ -1,5 +1,5 @@
-# Predixion AI x TalentX — Resilient Collections Inference Service
-### AWS Forward Deployment Engineer Track — Round 1 & Round 2 Unified Solution
+# Predixion AI — Resilient Voice Collections Agent
+### Candidate Submission Brief — AWS Forward Deployment Engineer Track (Round 1 & Round 2)
 
 [![CI Pipeline](https://github.com/SNOOKEY/predixion_ai/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SNOOKEY/predixion_ai/actions/workflows/ci.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
@@ -12,69 +12,65 @@
 
 ---
 
-## ⚡ 60-Second Evaluator Quickstart
+## Candidate Overview: Engineering Summary
 
-You can evaluate this project either by **testing our live AWS deployment** or by **running it locally in one command**.
+Hi team,
 
-### Option A: Test Live AWS Deployment (Round 2 — Active in `ap-south-1`)
+Here is my complete, production-ready submission for the **Predixion AI Voice Collections Agent Challenge**. 
 
-Our production infrastructure is live on AWS Mumbai. You can query it right now:
+In high-volume BFSI debt collections (Credit Cards, BNPL, Personal Loans), call drops are costly and hazardous: they damage borrower trust, erase in-flight negotiation context, and create severe regulatory compliance violations under RBI Fair Practices directives. 
 
-```bash
-# 1. Health Probe (ALB -> Multi-AZ ECS Fargate)
-curl http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com/health
+When a downstream voice pipeline (STT $\to$ LLM $\to$ TTS) experiences transient degradation—such as the 20% HTTP 503 error rate and lognormal latency spikes (p50 ~300ms, p90 ~700ms, p99 ~1.2s) specified in the brief—a naive inference service fails callers and drops data. 
 
-# 2. Check AWS SQS Dead-Letter Queue
-curl http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com/dlq/stats
+I designed this solution as a unified, two-round system:
+1. **Task 1 (Core Resilience & Boundary)**: An application layer that absorbs downstream failures through exponential backoff with randomized jitter, trips a three-state circuit breaker to prevent thundering herds, and captures 100% of unrecoverable calls into a persistent Dead-Letter Queue (DLQ).
+2. **Task 2 (Cloud Production & Seniority Track)**: Deploying this service onto **AWS ECS Fargate Multi-AZ** in `ap-south-1` (Mumbai) with native rolling Blue/Green automated rollback, centralized AWS SQS DLQ persistence, least-privilege IAM, and an end-to-end automated GitHub Actions CI/CD pipeline.
 
-# 3. Send 30-call traffic batch through live ALB
-python traffic_generator/load_tester.py --url http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com --quick --count 30
-
-# 4. Replay any failed calls stored in AWS SQS DLQ
-curl -X POST http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com/dlq/replay
-```
-
-> **Live AWS Console Dashboard**: [CollectionsAgent-Observability (CloudWatch)](https://ap-south-1.console.aws.amazon.com/cloudwatch/home?region=ap-south-1#dashboards:name=CollectionsAgent-Observability)
+Below is the complete walkthrough of how each requirement was met, how the model boundary was abstracted, how the cloud infrastructure was architected, and how you can run and evaluate it immediately.
 
 ---
 
-### Option B: Run Locally with One Command (Round 1)
+## ⚡ Quick Evaluation: Test It in Under 60 Seconds
 
-Evaluators do **not** need to configure AWS credentials or install scanners locally. Everything runs in Docker:
+You can evaluate this submission in one of two ways:
+
+### Option A: Test My Live AWS Deployment (`ap-south-1`)
+The production infrastructure is currently live on AWS Mumbai. You can run these commands directly against the active Application Load Balancer:
 
 ```bash
-# 1. Clone & spin up both services (Inference on :8000, Mock Downstream on :8001)
+# 1. Health & circuit breaker state
+curl http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com/health
+
+# 2. Inspect the live AWS SQS Dead-Letter Queue
+curl http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com/dlq/stats
+
+# 3. Fire a 30-call traffic batch through the live ALB
+python traffic_generator/load_tester.py --url http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com --quick --count 30
+
+# 4. Replay dead letters directly from AWS SQS
+curl -X POST http://predixion-alb-2128714305.ap-south-1.elb.amazonaws.com/dlq/replay
+```
+*Live CloudWatch Observability Dashboard*: [CollectionsAgent-Observability (ap-south-1)](https://ap-south-1.console.aws.amazon.com/cloudwatch/home?region=ap-south-1#dashboards:name=CollectionsAgent-Observability)
+
+---
+
+### Option B: Run Locally in One Command (Docker Compose)
+Evaluators do **not** need cloud credentials, AWS setup, or local security scanners. Everything spins up locally:
+
+```bash
+# 1. Start Inference Service (:8000) and Mock Dependency (:8001)
 docker compose up --build -d
 
-# 2. Run quick verification test (30 calls under 20% simulated downstream failure)
+# 2. Run quick verification test (30 calls with 20% injected failure)
 python traffic_generator/load_tester.py --quick
 
-# 3. Inspect stored calls & dead letters in terminal
+# 3. View stored call records and DLQ entries in your terminal
 python traffic_generator/load_tester.py --inspect
 ```
 
 ---
 
-## 🎯 Challenge Requirements & Compliance Matrix
-
-| Track / Section | Rubric Requirement | Implementation Location | Status |
-| :--- | :--- | :--- | :---: |
-| **Round 1** | Resilient Inference Service (FastAPI) | [`inference_service/main.py`](file:///C:/Users/anazs/projects/predixion_ai/inference_service/main.py) | ✅ **100%** |
-| **Round 1** | Downstream Mock with 20% 503s & lognormal latency | [`mock_dependency/main.py`](file:///C:/Users/anazs/projects/predixion_ai/mock_dependency/main.py) | ✅ **100%** |
-| **Round 1** | Backoff + Jitter & 3-State Circuit Breaker | [`inference_service/circuit_breaker.py`](file:///C:/Users/anazs/projects/predixion_ai/inference_service/circuit_breaker.py) | ✅ **100%** |
-| **Round 1** | Zero Dropped Calls Dead-Letter Queue | [`inference_service/dlq_handler.py`](file:///C:/Users/anazs/projects/predixion_ai/inference_service/dlq_handler.py) | ✅ **100%** |
-| **Round 1** | Appendix C Traffic Replayer & Metrics | [`traffic_generator/load_tester.py`](file:///C:/Users/anazs/projects/predixion_ai/traffic_generator/load_tester.py) | ✅ **100%** |
-| **Round 2** | AWS ECS Fargate Deployment via Terraform | [`terraform/ecs_fargate.tf`](file:///C:/Users/anazs/projects/predixion_ai/terraform/ecs_fargate.tf) | ✅ **100%** |
-| **Round 2** | Centralized AWS SQS DLQ (`collections-dlq`) | [`terraform/sqs.tf`](file:///C:/Users/anazs/projects/predixion_ai/terraform/sqs.tf) | ✅ **100%** |
-| **Round 2** | CloudWatch Observability Dashboard | [`terraform/cloudwatch.tf`](file:///C:/Users/anazs/projects/predixion_ai/terraform/cloudwatch.tf) | ✅ **100%** |
-| **Round 2** | Appendix F Non-Wildcard IAM Least Privilege | [`terraform/iam.tf`](file:///C:/Users/anazs/projects/predixion_ai/terraform/iam.tf) | ✅ **100%** |
-| **Seniority** | Multi-AZ HA (`ap-south-1a` & `ap-south-1b`) + Playbook | [`docs/seniority_architecture.md`](file:///C:/Users/anazs/projects/predixion_ai/docs/seniority_architecture.md#L11-L53) | ✅ **100%** |
-| **Seniority** | Zero-Downtime Deployment & Automated Rollback | [`terraform/ecs_fargate.tf`](file:///C:/Users/anazs/projects/predixion_ai/terraform/ecs_fargate.tf#L95-L100) | ✅ **100%** |
-| **Seniority** | RBI Data Localization & Sub-15ms Cadence in Mumbai | [`docs/seniority_architecture.md`](file:///C:/Users/anazs/projects/predixion_ai/docs/seniority_architecture.md#L74-L90) | ✅ **100%** |
-
----
-
-## Architecture Overview
+## Task 1: How the Resilience Layer & Zero-Drop DLQ Were Built
 
 ```
                       +-------------------------------------------------------+
@@ -82,7 +78,7 @@ python traffic_generator/load_tester.py --inspect
                       |                                                       |
   Call Events         |   +-----------------------------------------------+   |
  [Appendix A] ------> |   |         ResilientPipelineClient               |   |
- (Traffic Generator)  |   |  - Exponential Backoff + Randomized Jitter    |   |
+ (Traffic Generator)  |   |  - Exponential Backoff + Full Jitter          |   |
                       |   |  - Circuit Breaker (CLOSED / OPEN / HALF-OPEN)|   |
                       |   +-----------------------+-----------------------+   |
                       |                           | Calls boundary            |
@@ -109,38 +105,69 @@ python traffic_generator/load_tester.py --inspect
                       +-------------------------------------------------------+
 ```
 
+### 1. Exponential Backoff with Full Randomized Jitter
+To prevent retrying clients from hammering recovering downstream services at synchronized intervals (thundering herds), I implemented the AWS Full Jitter algorithm:
+$$\text{sleep} = \min(\text{max\_delay}, \text{base\_delay} \times 2^{\text{attempt}}) + \text{uniform}(0, \text{jitter})$$
+- Default settings: `base_delay = 0.5s`, `max_delay = 4.0s`, `max_retries = 3`.
+- Retries trigger exclusively on retryable status codes (`503 Service Unavailable`, `504 Gateway Timeout`, or socket timeouts), while 4xx client errors fast-fail immediately.
+
+### 2. Three-State Circuit Breaker State Machine
+Implemented in [`inference_service/circuit_breaker.py`](file:///C:/Users/anazs/projects/predixion_ai/inference_service/circuit_breaker.py):
+- **`CLOSED`**: All requests flow downstream. Consecutive 503/timeout failures increment an internal counter.
+- **`OPEN`**: When consecutive failures hit the threshold (5), the breaker trips. Incoming calls are short-circuited in < 1ms directly to the Dead-Letter Queue without wasting downstream sockets.
+- **`HALF_OPEN`**: After a 30-second cooldown, the breaker cautiously admits trial requests. If successful, it automatically heals back to `CLOSED`; if they fail, it immediately trips back to `OPEN`.
+
+### 3. Zero-Loss Dead-Letter Queue (DLQ)
+In collections, an unrecorded dropped call means a lost promise-to-pay (PTP) or an unnotified borrower.
+- **Dual-Storage Engine**:
+  - **Local Development**: Stored in a resilient SQLite database at [`data/dead_letters.db`](file:///C:/Users/anazs/projects/predixion_ai/data/dead_letters.db).
+  - **Cloud Production**: Switches seamlessly to **AWS SQS** when `SQS_DLQ_URL` is set, storing events with a 14-day compliance retention period.
+- **Audit Logging**: Every record captures `event_id`, `borrower_bucket`, `product_type`, `failure_reason`, `retry_count`, `created_at`, and the complete uncorrupted payload.
+- **Automated Replay**: Exposes `POST /dlq/replay` to poll, reprocess, and delete dead letters once the downstream recovers.
+
 ---
 
-## Detailed Component Breakdown
+## How to Switch from the Mock to a Real Open-Weight LLM Stack
 
-### 1. Resilience Layer & Circuit Breaker
-- **Full Jitter Exponential Backoff**:
-  $$\text{delay} = \min(\text{max\_delay}, \text{base\_delay} \times 2^{\text{attempt}}) + \text{uniform}(0, \text{jitter})$$
-  Ensures that when the downstream mock returns 503s or suffers from latency spikes, retries do not synchronize into destructive retry storms.
-- **Circuit Breaker State Machine**:
-  - `CLOSED`: Normal operation. Failures increment an error counter.
-  - `OPEN`: Once consecutive failures exceed the threshold (default: 5), calls fast-fail immediately to DLQ in < 1ms without calling downstream.
-  - `HALF_OPEN`: After a cooldown period (default: 30s), trial requests test if downstream recovered. If successful, resets to `CLOSED`; if failed, flips back to `OPEN`.
+As required by the challenge prompt, the resilience layer is **strictly decoupled** from the downstream execution logic via the abstract `BasePipelineClient` interface in [`inference_service/pipeline_client.py`](file:///C:/Users/anazs/projects/predixion_ai/inference_service/pipeline_client.py):
 
-### 2. Zero-Loss Dead-Letter Queue (DLQ)
-- **Zero Dropped Calls**: In debt collections, dropping a borrower call mid-interaction or discarding an unlogged failure violates compliance rules.
-- **Dual Storage Engine**:
-  - **Local Mode**: Uses SQLite database at [`data/dead_letters.db`](file:///C:/Users/anazs/projects/predixion_ai/data/dead_letters.db).
-  - **Cloud Mode**: When `SQS_DLQ_URL` is set, the service routes dead letters directly to **AWS SQS** (`collections-dlq`).
-- **Replay Capability**: Both SQLite and AWS SQS support one-click replay via `POST /dlq/replay`, re-injecting failed calls back into the pipeline once downstream models recover.
-
-### 3. Model-Agnostic Interface (`BasePipelineClient`)
-The resilience layer wraps an abstract interface:
 ```python
 class BasePipelineClient(ABC):
     @abstractmethod
-    async def process_call(self, payload: dict) -> dict: ...
+    async def process_call(self, payload: dict) -> dict:
+        """Process a call event through STT -> LLM -> TTS pipeline."""
+        pass
 ```
-To swap the HTTP mock for a real open-weight stack (`faster-whisper` STT $\to$ `vLLM` Llama-3 LLM $\to$ `Piper` TTS), simply implement `BasePipelineClient`. The circuit breaker, retries, and DLQ operate identically with zero modifications.
+
+### Switching to a Real Open-Weight GPU Stack:
+To plug in a real production model stack (e.g., deployed on an AWS `g5.xlarge` instance with 24GB A10G GPU), simply create a concrete implementation of `BasePipelineClient`:
+
+```python
+class OpenWeightPipelineClient(BasePipelineClient):
+    def __init__(self, stt_client, vllm_client, tts_client):
+        self.stt = stt_client      # faster-whisper (large-v3-turbo, ~200ms)
+        self.vllm = vllm_client    # vLLM serving Llama-3.1-8B-Instruct (AWQ quantized)
+        self.tts = tts_client      # Piper TTS (~50ms deterministic voice synthesis)
+
+    async def process_call(self, payload: dict) -> dict:
+        # 1. Transcribe borrower voice audio
+        transcript = await self.stt.transcribe(payload["audio_ref"])
+        
+        # 2. Stream collections prompt through local vLLM server
+        response_text = await self.vllm.generate(
+            prompt=f"Collections Agent for {payload['event']['product_type']}: {transcript}"
+        )
+        
+        # 3. Synthesize natural response speech
+        audio_out = await self.tts.synthesize(response_text)
+        return {"transcript": transcript, "response": response_text, "audio": audio_out}
+```
+
+Because `ResilientPipelineClient` wraps `BasePipelineClient`, **zero lines of code** in the retry engine, circuit breaker, metrics collector, or dead-letter queue need to change when swapping from the mock to real open-weight models.
 
 ---
 
-## AWS Cloud Infrastructure (Round 2)
+## Task 2: Cloud Infrastructure & AWS ECS Deployment
 
 ```
                                   [Internet]
@@ -159,57 +186,78 @@ To swap the HTTP mock for a real open-weight stack (`faster-whisper` STT $\to$ `
        └────────────────────────────┘   └────────────────────────────┘
                        │                               │
                        └───────────────┬───────────────┘
-                                       ▼
+                                        ▼
                        [Centralized AWS SQS DLQ]
                      (collections-dlq: 14-day audit)
 ```
 
-### Seniority Architecture Details:
-1. **Multi-AZ High Availability**:
-   - Deployed across `ap-south-1a` and `ap-south-1b` in private subnets.
-   - Outbound egress restricted via NAT Gateway. No task has a public IP.
-2. **Rolling Blue/Green Deployment with Automated Rollback**:
-   - `deployment_maximum_percent = 200`: Launches new Green tasks before terminating old Blue tasks.
-   - `deployment_minimum_healthy_percent = 100`: Preserves 100% capacity at all times.
-   - `deployment_circuit_breaker { enable = true, rollback = true }`: Automatically halts deployment and rolls back to the previous stable revision if the new version fails ALB `/health` checks.
-3. **Autoscaling Policies**:
-   - Target Tracking: Maintains 30 requests/target/minute.
-   - Step Scaling: Scales up to 5 tasks when in-flight voice calls spike above 25.
-4. **RBI Data Localization (`ap-south-1`)**:
-   - Mandated by Reserve Bank of India (RBI) Digital Lending directives. All audio data, loan agreement references, and dead letters remain strictly within Mumbai data centers.
+The cloud architecture was provisioned via Terraform in [`terraform/`](file:///C:/Users/anazs/projects/predixion_ai/terraform/):
+
+1. **Multi-AZ VPC**: 2 public subnets (ALB & NAT Gateway) and 2 private subnets across `ap-south-1a` and `ap-south-1b`. Tasks have no public IPs.
+2. **ECS Fargate Service**: Runs a sidecar container pattern:
+   - Container 1: `inference-service` (FastAPI resilience layer on port 8000)
+   - Container 2: `mock-dependency` (Downstream mock pipeline on port 8001)
+3. **Application Load Balancer (ALB)**: Routes public incoming traffic on port 80 with active health checking on `/health`.
+4. **AWS SQS Dead-Letter Queue**: Queue `collections-dlq` receives unrecoverable calls. 14-day retention satisfies compliance dispute windows.
+5. **Autoscaling Target Tracking**:
+   - Maintains a target of 30 requests/target/minute.
+   - Custom Step Scaling policy triggers additional capacity when in-flight voice calls spike above 25.
+6. **Least-Privilege IAM (Appendix F)**:
+   - Task Role permissions are strictly scoped to `collections-dlq` (`sqs:SendMessage`, `sqs:ReceiveMessage`, `sqs:DeleteMessage`, `sqs:GetQueueAttributes`) and CloudWatch scoped metric writes. Zero wildcards (`*`) used for ECS, IAM, or S3.
 
 ---
 
-## Step-by-Step Local Execution
+## Seniority Track Stretch Objectives
 
-### Prerequisites
-- Python 3.10+ (or Docker / Docker Compose)
+### 1. Multi-AZ High Availability & Failure Simulation Playbook
+- **Baseline Deployment**: Configured with `min_tasks = 2`, running actively across both `ap-south-1a` and `ap-south-1b`.
+- **Failure Simulation Playbook** ([`docs/seniority_architecture.md`](file:///C:/Users/anazs/projects/predixion_ai/docs/seniority_architecture.md#L38-L53)):
+  ```bash
+  # 1. Fetch task running in ap-south-1a
+  TASK_ID=$(aws ecs list-tasks --cluster predixion-cluster --region ap-south-1 --query "taskArns[0]" --output text)
+  # 2. Simulate sudden data center/AZ outage by terminating that task
+  aws ecs stop-task --cluster predixion-cluster --task $TASK_ID --reason "Simulating ap-south-1a outage" --region ap-south-1
+  ```
+  **Result**: ALB health checks instantly shift 100% of traffic to the task in `ap-south-1b`. ECS automatically launches a replacement task in `ap-south-1a`. Zero dropped calls.
+
+### 2. Zero-Downtime Deployment & Automated Rollback
+Implemented natively via ECS Deployment Circuit Breaker:
+- `deployment_maximum_percent = 200`: Spins up a complete set of new "Green" containers alongside active "Blue" containers before stopping old ones.
+- `deployment_minimum_healthy_percent = 100`: Guarantees 100% healthy capacity throughout deployments.
+- `deployment_circuit_breaker { enable = true, rollback = true }`: If the new revision fails container startup or ALB `/health` checks, ECS halts rollout and **automatically rolls back** to the previous stable task revision.
+
+### 3. `ap-south-1` (Mumbai) Regional & Regulatory Considerations
+- **RBI Data Localization**: RBI Guidelines on Digital Lending mandate that borrower financial records, call audio, and recovery logs reside exclusively within India. Deploying in `ap-south-1` enforces strict territorial compliance.
+- **Conversational Cadence (< 15ms Telephony Latency)**: Voice collections requires seamless turn-taking cadence. Delays over 600ms cause unnatural awkward pauses. Operating in Mumbai provides sub-15ms round-trip transit to Indian telecom gateways (Exotel, Airtel, Tata Tele), leaving ample headroom for the inference pipeline.
+
+---
+
+## Local Developer Quickstart
 
 ```bash
-# 1. Install dependencies
+# 1. Clone repository & install dependencies
+git clone https://github.com/SNOOKEY/predixion_ai.git
+cd predixion_ai
 pip install -r requirements.txt
 
-# 2. Run automated test suite (12 unit tests)
+# 2. Run unit & integration test suite (12 tests)
 python -m unittest discover tests
 
-# 3. Start Mock Downstream (Terminal 1)
+# 3. Start both services in separate terminals
 python -m uvicorn mock_dependency.main:app --host 0.0.0.0 --port 8001
-
-# 4. Start Inference Service (Terminal 2)
 python -m uvicorn inference_service.main:app --host 0.0.0.0 --port 8000
 
-# 5. Generate call dataset & run load tester (Terminal 3)
-python traffic_generator/generate_dataset.py
+# 4. Run traffic benchmark
 python traffic_generator/load_tester.py --quick
 ```
 
 ---
 
-## API Documentation
+## REST API Reference
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `POST` | `/calls/process` | Ingests a call event; executes resilient pipeline or degrades to DLQ. |
+| `POST` | `/calls/process` | Ingests a voice call event; executes resilient pipeline or degrades to DLQ. |
 | `GET` | `/calls` | Query historical audit logs of all past calls. |
 | `GET` | `/calls/summary` | Aggregate call counts, success percentage, and latency percentiles. |
 | `GET` | `/dlq` | Inspect stored dead letters (supports pagination & status filters). |
@@ -223,19 +271,19 @@ python traffic_generator/load_tester.py --quick
 
 ---
 
-## Automated CI/CD Pipeline (GitHub Actions)
+## Automated CI/CD Pipeline
 
-Every push or pull request to `main` executes our 4-stage pipeline:
-1. **Code Quality & Tests**: `ruff` linting + unit tests with coverage.
-2. **Security & Vulnerability Scanning**: `pip-audit` (SCA), `Bandit` (AST SAST), `TruffleHog` (Secret leaks).
-3. **SonarQube Quality Gate**: Static code analysis & maintainability score.
-4. **Container Build & Trivy Scan**: Docker multi-tag build + Aqua Trivy image vulnerability scan + push to AWS ECR.
+The repository includes a 4-stage GitHub Actions workflow in [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+1. **Stage 1**: `ruff` code formatting & Pytest unit test coverage.
+2. **Stage 2**: Security vulnerability auditing (`pip-audit`, `Bandit` SAST, `TruffleHog` secrets).
+3. **Stage 3**: SonarQube Quality Gate analysis.
+4. **Stage 4**: Docker multi-tag build + Aqua Trivy container vulnerability scan + AWS ECR push.
 
 ---
 
 ## Infrastructure Teardown
 
-To avoid unnecessary cloud costs after evaluation:
+To cleanly destroy all cloud resources and avoid ongoing AWS charges after evaluation:
 
 ```bash
 cd terraform
@@ -246,4 +294,4 @@ terraform destroy -auto-approve
 
 ## License
 
-This project is licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) file for complete terms.
