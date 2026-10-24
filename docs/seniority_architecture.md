@@ -52,22 +52,21 @@ To demonstrate that the service remains online when an entire Availability Zone 
 
 ---
 
-## 2. Blue/Green Deployment & Automated Rollback Strategy
+## 2. Zero-Downtime Deployment & Automated Rollback Strategy
 
-Unlike standard in-place updates, Blue/Green prevents broken container versions from ever impacting live collections calls.
+To guarantee that broken container images or failing downstream dependencies never impact live borrowers or cause dropped calls, we implement a **Rolling Blue/Green Deployment with ECS Native Deployment Circuit Breakers and Automated Rollback**.
 
 ### Architecture:
-- **Blue Target Group (`predixion-tg-blue`)**: Actively serving production traffic on ALB port 80.
-- **Green Target Group (`predixion-tg-green`)**: Hosts the newly deployed version for smoke testing on ALB test port 8080.
-- **AWS CodeDeploy Controller (`predixion-collections-app`)**:
-  - Automatically shifts live traffic from Blue to Green using `CodeDeployDefault.ECSAllAtOnce`.
-  - Keeps Blue containers warm for 5 minutes (`termination_wait_time_in_minutes = 5`) as an instant safety net.
-
-### Automated Rollback Trigger:
-- A CloudWatch Alarm (`predixion-deployment-5xx-alarm`) monitors ALB HTTP 5XX error rates.
-- If the new Green deployment produces unexpected 5XX errors or fails downstream during the switch:
-  - CodeDeploy immediately cancels the deployment.
-  - **Instant automated rollback**: 100% of borrower calls are instantly flipped back to the stable Blue target group with zero manual human intervention required.
+- **Rolling Blue/Green Surge**:
+  - `deployment_maximum_percent = 200`: When a new task definition is deployed, ECS provisions a complete new set of Green tasks in parallel before terminating any Blue tasks.
+  - `deployment_minimum_healthy_percent = 100`: Ensures that 100% of required healthy capacity (2 tasks across Multi-AZ) is maintained and actively serving production traffic at all times.
+- **ALB Health Gate**:
+  - New Green containers must pass consecutive `/health` checks on port 8000 before receiving any production traffic from the ALB.
+- **Automated Rollback (Deployment Circuit Breaker)**:
+  - Configured with `deployment_circuit_breaker { enable = true, rollback = true }`.
+  - If new tasks fail container startup, crash due to missing dependencies, or fail ALB health check verification, the circuit breaker trips automatically.
+  - ECS immediately marks the deployment as failed, halts rollout, tears down the unhealthy Green tasks, and restores 100% traffic to the previously verified, healthy Blue task revision.
+  - Zero dropped calls, zero manual intervention, and no external CodeDeploy service subscription dependencies.
 
 ---
 

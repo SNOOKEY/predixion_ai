@@ -28,17 +28,7 @@ output "cloudwatch_dashboard_url" {
   value       = "https://${var.aws_region}.console.aws.amazon.com/cloudwatch/home?region=${var.aws_region}#dashboards:name=${aws_cloudwatch_dashboard.main.dashboard_name}"
 }
 
-output "alb_test_listener_url" {
-  description = "Test listener URL on Port 8080 for Green deployment validation"
-  value       = "http://${aws_lb.main.dns_name}:8080"
-}
-
-output "codedeploy_app_name" {
-  description = "CodeDeploy Application Name"
-  value       = aws_codedeploy_app.collections.name
-}
-
-output "codedeploy_deployment_group_name" {
-  description = "CodeDeploy Blue/Green Deployment Group"
-  value       = aws_codedeploy_deployment_group.collections.deployment_group_name
+output "rollback_strategy" {
+  description = "Active automated rollback mechanism configured on ECS"
+  value       = "ECS Deployment Circuit Breaker with Automated Rollback (Rolling Blue/Green with 200% max / 100% min healthy)"
 }

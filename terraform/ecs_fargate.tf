@@ -92,8 +92,12 @@ resource "aws_ecs_service" "app" {
   desired_count   = var.min_tasks
   launch_type     = "FARGATE"
 
-  deployment_controller {
-    type = "CODE_DEPLOY"
+  deployment_maximum_percent         = 200
+  deployment_minimum_healthy_percent = 100
+
+  deployment_circuit_breaker {
+    enable   = true
+    rollback = true
   }
 
   network_configuration {
@@ -103,17 +107,13 @@ resource "aws_ecs_service" "app" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.blue.arn
+    target_group_arn = aws_lb_target_group.app.arn
     container_name   = "inference-service"
     container_port   = var.app_port
   }
 
   lifecycle {
-    ignore_changes = [
-      task_definition,
-      load_balancer,
-      desired_count
-    ]
+    ignore_changes = [desired_count]
   }
 
   depends_on = [aws_lb_listener.http]
