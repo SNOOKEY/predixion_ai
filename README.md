@@ -25,8 +25,8 @@ This repository is organized strictly into two linear phases:
 | Assignment Task | Required Deliverable | Repository Location | Notes |
 | :--- | :--- | :--- | :--- |
 | **Task 1** | **Git Repo: Code + README** | [`inference_service/`](inference_service/) & [`README.md`](README.md) | Full resilience service & 12 passing unit tests |
-| **Task 1** | **Half-Page Cost Writeup** | [`cost_estimate.md`](cost_estimate.md) & [Section 1.3](#13-half-page-cost-estimation-writeup) | Detailed Config A vs Config B comparison in `ap-south-1` |
-| **Task 1** | **One Paragraph: Swapping Mock for Real Model** | [Section 1.4](#14-how-to-swap-the-mock-for-a-real-open-weight-model-one-paragraph) | Model-agnostic `BasePipelineClient` interface |
+| **Task 1** | **Half-Page Cost Writeup** | [`cost_estimate.md`](cost_estimate.md) & [Section 1.4](#14-half-page-cost-estimation-writeup) | Detailed Config A vs Config B comparison in `ap-south-1` |
+| **Task 1** | **One Paragraph: Swapping Mock for Real Model** | [Section 1.5](#15-how-to-swap-the-mock-for-a-real-open-weight-model-one-paragraph) | Model-agnostic `BasePipelineClient` interface |
 | **Task 2** | **Full Repo: IaC + App + README** | [`terraform/`](terraform/) & [`README.md`](README.md) | Multi-AZ ECS Fargate IaC in `ap-south-1` behind ALB |
 | **Task 2** | **Operational Runbook** | [`docs/runbook.md`](docs/runbook.md) & [Section 2.3](#23-operational-runbook-appendix-i) | Appendix I Incident triage, diagnostics, and recovery |
 | **Task 2** | **Seniority Architecture Blueprint** | [`docs/seniority_architecture.md`](docs/seniority_architecture.md) & [Section 2.4](#24-seniority-track-stretch-objectives) | Multi-AZ simulation, Blue/Green rollback, & RBI compliance |
@@ -119,7 +119,24 @@ python traffic_generator/load_tester.py --inspect
 
 ---
 
-### 1.2 Resilience Implementation Details
+### 1.2 Inspection Endpoints & Status Probes (Task 1)
+
+While the service is running locally on port 8000 (via either Python or Docker Compose), you can monitor, inspect, and trigger the service directly through your web browser or `curl`:
+
+| What You Want to See | Browser / Curl URL | Description |
+| :--- | :--- | :--- |
+| **Service Health & Breaker State** | [`http://localhost:8000/health`](http://localhost:8000/health) | Live status probe and current circuit breaker state (`CLOSED`, `OPEN`, `HALF_OPEN`). |
+| **Dead-Letter Queue Statistics** | [`http://localhost:8000/dlq/stats`](http://localhost:8000/dlq/stats) | Summary count of total, pending, and replayed dead letters with failure reason breakdown. |
+| **Inspect Stored Dead Letters** | [`http://localhost:8000/dlq`](http://localhost:8000/dlq) | Full records of all dropped/degraded calls with payloads, retry counts, and error reasons. |
+| **Historical Call Audit Log** | [`http://localhost:8000/calls`](http://localhost:8000/calls) | Browse every processed call stored in SQLite across all simulation runs. |
+| **Call Volume & Latency Summary** | [`http://localhost:8000/calls/summary`](http://localhost:8000/calls/summary) | Aggregated metrics: total calls, success rate, and average latency. |
+| **Circuit Breaker Diagnostics** | [`http://localhost:8000/circuit-breaker/status`](http://localhost:8000/circuit-breaker/status) | Detailed circuit breaker telemetry (trip counts, consecutive failure tallies). |
+| **Real-time Telemetry Metrics** | [`http://localhost:8000/metrics`](http://localhost:8000/metrics) | Combined active session and cumulative database performance counters. |
+| **Replay Pending Dead Letters** | `curl -X POST http://localhost:8000/dlq/replay` | Manually triggers re-injection of all pending dead letters back into the pipeline. |
+
+---
+
+### 1.3 Resilience Implementation Details
 
 1. **Exponential Backoff with Full Randomized Jitter**:
    $$\text{sleep} = \min(\text{max\_delay}, \text{base\_delay} \times 2^{\text{attempt}}) + \text{uniform}(0, \text{jitter})$$
@@ -137,7 +154,7 @@ python traffic_generator/load_tester.py --inspect
 
 ---
 
-### 1.3 Half-Page Cost Estimation Writeup
+### 1.4 Half-Page Cost Estimation Writeup
 
 > Complete detailed analysis file: [`cost_estimate.md`](cost_estimate.md)
 
@@ -158,7 +175,7 @@ python traffic_generator/load_tester.py --inspect
 
 ---
 
-### 1.4 How to Swap the Mock for a Real Open-Weight Model (One Paragraph)
+### 1.5 How to Swap the Mock for a Real Open-Weight Model (One Paragraph)
 
 > **Prompt Requirement**: *One paragraph on how you’d swap the mock for a real open-weight model.*  
 > To swap the mocked dependency for a real open-weight model stack without touching any resilience logic, we implement the abstract `BasePipelineClient` interface defined in [`inference_service/pipeline_client.py`](inference_service/pipeline_client.py): incoming borrower voice streams to `faster-whisper` (`large-v3-turbo` with CTranslate2 for sub-200ms GPU transcription), the transcribed text is dispatched asynchronously to a local `vLLM` high-throughput inference engine serving an AWQ-quantized `Llama-3.1-8B-Instruct` or `Mistral-7B-Instruct` model to generate context-aware collections negotiation responses, and the output text is synthesized to natural speech via `Piper TTS` in under 50ms. Because `ResilientPipelineClient` acts as a pure decorator over `BasePipelineClient`, the exponential jitter retries, three-state circuit breaker, and Dead-Letter Queue capture continue to protect the system identically with zero code modifications when pointing to real GPU hardware.
