@@ -34,6 +34,7 @@ resource "aws_ecs_task_definition" "app" {
       name      = "inference-service"
       image     = var.app_image
       essential = true
+      command   = ["uvicorn", "inference_service.main:app", "--host", "0.0.0.0", "--port", "8000"]
       portMappings = [
         {
           containerPort = var.app_port
@@ -44,6 +45,7 @@ resource "aws_ecs_task_definition" "app" {
       environment = [
         { name = "ENVIRONMENT", value = var.environment },
         { name = "AWS_REGION", value = var.aws_region },
+        { name = "MOCK_PIPELINE_URL", value = "http://localhost:8001" },
         { name = "SQS_DLQ_URL", value = aws_sqs_queue.dlq.url },
         { name = "CLOUDWATCH_NAMESPACE", value = "CollectionsChallenge" }
       ]
@@ -52,7 +54,31 @@ resource "aws_ecs_task_definition" "app" {
         options = {
           "awslogs-group"         = aws_cloudwatch_log_group.ecs.name
           "awslogs-region"        = var.aws_region
-          "awslogs-stream-prefix" = "service"
+          "awslogs-stream-prefix" = "inference"
+        }
+      }
+    },
+    {
+      name      = "mock-dependency"
+      image     = var.app_image
+      essential = true
+      command   = ["uvicorn", "mock_dependency.main:app", "--host", "0.0.0.0", "--port", "8001"]
+      portMappings = [
+        {
+          containerPort = 8001
+          hostPort      = 8001
+          protocol      = "tcp"
+        }
+      ]
+      environment = [
+        { name = "FAILURE_RATE", value = "0.20" }
+      ]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = aws_cloudwatch_log_group.ecs.name
+          "awslogs-region"        = var.aws_region
+          "awslogs-stream-prefix" = "dependency"
         }
       }
     }
