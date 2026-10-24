@@ -81,30 +81,39 @@ pip install -r requirements.txt
 # 2. Run automated unit test suite (12 tests, 100% pass)
 python -m unittest discover tests
 
-# 3. Start Mock Downstream Pipeline (Terminal 1)
+# 3. Start Mock Downstream Pipeline on port 8001 (Terminal 1)
 python -m uvicorn mock_dependency.main:app --host 0.0.0.0 --port 8001
 
-# 4. Start Resilient Inference Service (Terminal 2)
+# 4. Start Resilient Inference Service on port 8000 (Terminal 2)
 python -m uvicorn inference_service.main:app --host 0.0.0.0 --port 8000
 
-# 5. Generate synthetic call dataset & run load tester (Terminal 3)
+# 5. Generate synthetic call dataset (Terminal 3)
 python traffic_generator/generate_dataset.py
-python traffic_generator/load_tester.py --quick
 
-# 6. Inspect historical calls & dead letters in terminal
+# 6. Run Traffic Replayer & Resilience Benchmark:
+# Command 1: Quick verification batch with 30 sample calls
+python traffic_generator/load_tester.py --quick --count 30
+
+# Command 2: Full 24-hour schedule simulation (Appendix C compressed profile: baseline 10 cpm -> surge 50 cpm)
+python traffic_generator/load_tester.py --hours 24 --compression 360
+
+# Command 3: Inspect all stored calls, latency metrics, and dead letters
 python traffic_generator/load_tester.py --inspect
 ```
 
 #### Option B: Docker Container Build & Run (Single Command)
 Build and spin up both container services in the background:
 ```bash
-# Build and start inference service and mock dependency
+# 1. Build and start inference service and mock dependency
 docker compose up --build -d
 
-# Run 30-call verification test under 20% simulated downstream 503s
-python traffic_generator/load_tester.py --quick
+# 2. Run quick verification batch with 30 sample calls
+python traffic_generator/load_tester.py --quick --count 30
 
-# Inspect stored SQLite dead letters
+# 3. Run full 24-hour schedule simulation (compressed profile)
+python traffic_generator/load_tester.py --hours 24 --compression 360
+
+# 4. Inspect stored SQLite dead letters
 python traffic_generator/load_tester.py --inspect
 ```
 
